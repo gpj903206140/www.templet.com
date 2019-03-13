@@ -1,0 +1,197 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+<div class="main-w">
+    <div class="grzy-top clearfix">
+        <div class="r grzy-num clearfix">
+            <ul>
+                <li><span class="fs36">{$user_info.popularity}</span><br>人气</li>
+                <li><span class="fs36">{$user_info.fans}</span><br>粉丝</li>
+                <li><span class="fs36">{$user_info.release}</span><br>发布</li>
+            </ul>
+        </div>
+        <div class="">
+            <div class="grtx l">
+                <div class="grtx-edit rel">
+                    <a href="{:url('home/user/avatar_editor')}" data_c="edit">
+                        <div class="edit-tx shows" style="display: none">修改头像</div>
+                        <div class="txzhe"></div>
+                        {if condition="$user_info.avatar eq ''"}
+                        <img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80">
+                        {else/}
+                        <img src="{$user_info.avatar}" class="tximg w80" style="width:80px;height:80px;border-radius:50%;">
+                        {/if}
+                    </a>
+                </div>
+                <button class="btn  btn-regiest w80 " type="submit">关注</button>
+            </div>
+            <div class="grxinxi">
+                <div class="gr-name">{$user_info.username}</div>
+                <div class="inform g9 ">
+                    <div class="tab l">{$user_info.vocation}</div>
+                    <div class="fahg l">
+                        <i class="icon icon-boshi l"></i>
+                        <a href="javascript:;"> <i class="fa fa-wechat m5"></i></a>
+                        <a href="javascript:;"><i class="fa fa-qq m5"></i></a>
+                        {if condition="!$user_id"}<a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5"></i></a>{/if}
+                    </div>
+                </div>
+                <div class="gr-comany">
+                    <a href="javascript:;" class="com-name"> {$user_info.business.name}</a>
+                    <!-- <a href="javascript:;" class="shengchanjg">生产代工</a> | <a href="javascript:;" class="shengchanjg">设备制造</a> -->
+                    {if condition="$user_info.domain"}
+                    {volist name="$user_info.domain" id="d" key="k"}
+                    <a href="javascript:;" class="shengchanjg">{$d}</a> {if condition="$user_info.domain_count gt $k"}|{/if}
+                    {/volist}
+                    {/if}
+                </div>
+                <div class="inform mb0 clearfix">
+                    <div class="l gxqm">{if condition="$user_info.bio"}<span style="color:#333;">{$user_info.bio}</span>{else/}也许他文采不好，到现在都没有想到有创意的个性签名！{/if}</div>
+                    {if condition="!$user_id"}<a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 qm-edit"></i>{/if}</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tabs-container switch grzy">
+    <div class="navbg ">
+
+        <div class="r kulj1 "><a href="个人信息.html" class="redhx ">个人信息</a></div>
+        <ul class="nav nav-tabs redline">
+            <li class="cmfku grzl-t "><a  href="个人主页.html" > 他的CMF库</a>
+            </li>
+            <li class="active"><a  href="个人信息.html" > 他的资料</a>
+            </li>
+            <li class=""><a href="他的关注.html">他的关注 </a>
+            </li>
+            <li class=""><a href="他的粉丝.html"> 他的粉丝</a>
+            </li>
+        </ul>
+    </div>
+    <div class=" tab-content">
+
+
+           <div class="main-w bgwh yj5 jobnr rel" >
+               <div class="tjclbt">
+                   <div class="bt">基本信息：</div>
+               </div>
+               <div  class="gr-edit">
+                   {if condition="!$user_id"}<a href="{:url('home/user/data_editor')}"><i class="fa fa-edit"></i></a>{/if}
+               </div>
+               <div class="grmess">
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">用户名：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.username}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">职业：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.vocation}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">性别：</span>
+                       </label>
+                       <div class="l  m10">
+                           {if condition="$user_info.gender eq 0"}
+                           未设置
+                           {elseif condition="$user_info.gender eq 1"}
+                           男
+                           {elseif condition="$user_info.gender eq 2"}
+                           女
+                           {/if}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">家乡：</span>
+                       </label>
+                       <div class="l  m10">
+                           {if condition="$user_info.hometown"}{$user_info.hometown.province11} {$user_info.hometown.area11} {$user_info.hometown.city11}{/if}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">现居：</span>
+                       </label>
+                       <div class="l  m10">
+                           {if condition="$user_info.nhom"}{$user_info.nhom.province22} {$user_info.nhom.area22} {$user_info.nhom.city22}{/if}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">领域：</span>
+                       </label>
+                       <div class="l  m10">
+                           {if condition="$user_info.domain"}
+                            {volist name="$user_info.domain" id="d" key="k"}
+                            <a href="javascript:;" class="shengchanjg">{$d}</a> {if condition="$user_info.domain_count gt $k"}|{/if}
+                            {/volist}
+                            {/if}
+                       </div>
+                   </div>
+               </div>
+               <div class="tjclbt">
+                   <div class="bt">联系方式：</div>
+               </div>
+               <div class="grmess">
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">电话：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.phone}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">手机：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.mobile}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">邮箱：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.email}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">ＱＱ：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.qq}
+                       </div>
+                   </div>
+                   <div class="form-group clearfix">
+                       <label class="l control-label rel">
+                           <span class="clname">微信：</span>
+                       </label>
+                       <div class="l  m10">
+                           {$user_info.wechat}
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+    </div>
+</div>
+
+
+
+{include file="common/fooder" /}
+
+</body>
+</html> 

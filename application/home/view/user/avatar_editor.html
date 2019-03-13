@@ -1,0 +1,143 @@
+{include file="common/headPath" /}
+<body>
+
+<div class="sc-content">
+    <div class="zcbt sc">上传头像</div>
+    <div class="scnr ">
+         <form id="submit_form" method="post" action="{:url('home/user/avatar_editor')}" target="exec_target" enctype="multipart/form-data">
+        <div class="scnr1 clearfix">
+            <div class="l ">
+                <div class="sc-tu">
+                  <img src="__CDN__/assets/img/avatar.png"  id="imgShowa" style="width:100%;height:100%;"/>
+                 
+                  <input type="file" id="up_imga" style="display:none;"  name='file'>
+                   
+                </div>
+                <div>
+                    <!-- <div class="l"><a href="javascript:;" class="red">重新上传</a></div> -->
+                    <div class="r">
+                        <a href="javascript:;" class="g9"><label for="up_imga" class="upload"><i class="fa fa-plus-circle"></i></label></a>
+                        <!-- <a href="javascript:;" class="g9"><i class="fa fa-minus-circle"></i></a> -->
+                        <a href="javascript:;" class="g9 load"><i class="fa fa-repeat"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="r tc g9">
+                {if condition="$user_info.avatar neq ''"}
+                <img src="{$user_info.avatar}" class="img-circle txyl">
+                {else/}
+                <img src="__CDN__/assets/img/avatar.png" class="img-circle txyl">
+                {/if}
+                <br>
+                头像预览
+            </div>
+        </div>
+        <div class="btn-qdqx">
+            <button class="btn  btn-qd  " type="button" id="upload_file">确定</button>
+            <button class="btn  btn-regiest w100 " type="button">取消</button>
+        </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script src="__CDN__/assets/home/js/uploadPreview.js"></script>
+<script type="text/javascript">
+//刷新页面
+$(".load").click(function(){
+    window.location.reload(0);
+})
+//上传头像
+$("#upload_file").click(function(){
+    var form=$("#submit_form");
+    var fd=new FormData(form.get(0));
+    var url=form.attr('action');
+    $.ajax({
+        url:url,
+        type:form.attr('method'),
+        processData:false,
+        contentType:false,
+        async:false,
+        data:fd,
+        beforeSend: function(){
+
+        },
+        success: function(data){
+          //console.log(data);
+          eval('data='+data+'');
+          if(data.code==1){
+             layer.msg(data.msg);
+             setTimeout(function(){window.location.href=document.referrer;}, 1000);
+          }else{
+             layer.msg(data.msg);
+          }
+          
+        },
+        complete: function(){
+
+        }
+
+      })
+});
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        new uploadPreview({UpBtn: "up_imga", DivShow: "imgdiva", ImgShow: "imgShowa"});
+    };
+</script>
+
+<script src="__CDN__/assets/home/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="__CDN__/assets/home/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/layer/layer.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="__CDN__/assets/home/bootstrap/js/contabs.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="__CDN__/assets/home/js/jquery.row-grid.js"></script>
+<script type="text/javascript">
+    $('.about-eye').click(function () {
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash')
+    });
+    $('.video').mouseover(function () {
+        $(this).find(".bf").show();
+    });
+    $('.video').mouseleave(function () {
+        $(this).find(".bf").hide();
+    });
+    $(document).ready(function () {
+        $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    $('[data_c="ShowInfo"]').hover(function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).show();
+    }, function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).hide();
+    });
+</script>
+<script src="__CDN__/assets/home/js/TouchSlide.js"></script>
+<script>
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        autoPlay: true, // 自动播放
+        autoPage: true, // 自动分页
+        delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+        interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+        switchLoad: "_src" // 切换加载，真实图片路径为"_src"
+    });
+
+</script>
+
+
+</body>
+</html> 

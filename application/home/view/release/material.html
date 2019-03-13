@@ -1,0 +1,688 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/tmplate')}"> 发布样板</a></li>
+                <li class="active"><a href="{:url('home/release/material')}">发布材料</a></li>
+                <li class=""><a href="{:url('home/release/technology')}">发布工艺</a></li>
+                <li class=""><a href="{:url('home/release/device')}">发布设备</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cases')}">发布案例</a></li>
+                <li class=""><a href="{:url('home/release/video')}">发布视频</a></li>
+                <li class=""><a href="{:url('home/release/article')}">发布文章</a></li>
+                <li class=""><a href="{:url('home/release/interlocution')}">发布问答</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cmfbox')}">CMF盒子</a></li>
+            </ul>
+
+        </div>
+        <div class="fabu-content r">
+            <form class="form-horizontal" id="submit_form" method="post" action="{:url('home/release/material')}" target="exec_target" enctype="multipart/form-data">
+                <div class="fabubgwh yj5-0 mb10">
+                    <div>
+                        <div class="fabu-num1 clearfix">
+                            <div class="l per55">
+                                <div class="form-group clearfix">
+                                    <label class="l control-label rel">
+                                        <span class="red">*</span>
+                                        <input type="hidden" name="id" value="{$release_info.id}">
+                                        <span class="clname">材料名称：</span>
+                                    </label>
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput  w200" name="name" value="{$release_info.name}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix l">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">封面图片：</span>
+                                </label>
+                                <div class="l m10" style="margin-top: 5px;">
+                                    <a href="#">
+                                        <label for="up_imga" class="upload"><img src="{$release_info.cover_image==''?'__CDN__/assets/home/images/mrt.png':$release_info.cover_image}" class="fmtp" id="imgShowa" style="width:40px;height:31px;"></label>
+                                        <input type="file" id="up_imga" style="display:none;"  name='file' value="{$release_info.cover_image}">
+                                    </a>
+                                </div>
+                                <div class="l fs12 ccyq">
+                                    尺寸要求：257*145<br>
+                                    其他尺寸会被系统压缩，影响视觉效果！
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group clearfix mb10">
+                            <label class="l control-label rel">
+                                <span class="wh">*</span>
+                                <span class="clname">材料别名：</span>
+                            </label>
+                            <div class="l  m10 fbm10">
+                                {if condition="$release_info.alias"}
+                                {volist name="release_info.alias" id="alias"}
+                                <input type="text" class="form-control fbinput w200" name="alias[]" value="{$alias}">
+                                {/volist}
+                                {else/}
+                                 <input type="text" class="form-control fbinput w200" name="alias[]" value="">
+                                {/if}
+                                
+                            </div>
+                            <div class="l control-label addalias"><a href="javascript:;" class="g9 fs14">添加</a></div>
+                        </div>
+                        <div class="form-group mb10">
+                            <div class="mb10">
+                                <span class="red">*</span>
+                                <span class="clname ">简介：</span>
+                            </div>
+                            <div class="m10">
+                                <textarea type="text" placeholder=""
+                                          class="form-control fbinput xg-height1 " name="abstract">
+                                          {$release_info.abstract}
+                                          </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="l control-label rel">
+                                <span class="red">*</span>
+                                材料大类：
+                            </label>
+                            <div class="checkbox l ml5">
+                                <label>
+                                    <input class="checkbox" name="category[]" type="checkbox" value="有机高分子">有机高分子
+                                </label>
+                            </div>
+                            <div class="checkbox l ml5">
+                                <label>
+                                    <input class="checkbox" name="category[]" type="checkbox" value="无机非金属" >无机非金属
+                                </label>
+                            </div>
+                            <div class="checkbox l ml5">
+                                <label>
+                                    <input class="checkbox" name="category[]" type="checkbox" value="金属材料">金属材料
+                                </label>
+                            </div>
+                            <div class="checkbox l ml5">
+                                <label>
+                                    <input class="checkbox" name="category[]" type="checkbox" value="复合材料">复合材料
+                                </label>
+                            </div>
+                            {if condition="$release_info.category"}
+                            <p style="height: 35px;line-height: 35px;color: #f00;margin-left: 20px;float: left;font-size:14px;">
+                            <span style="color:#666;">已选中:</span>
+                            {volist name="release_info.category" id="cate"}
+                             {$cate}
+                            {/volist}
+                            </p>
+                            {/if}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="view">
+                    <div class="tabs-container">
+                        <ul class="nav nav-tabs redline bgwh">
+                            <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 详情</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">适用工艺</a></li>
+                            <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">适用设备</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="tab-1" class="tab-pane active">
+                                <div class="mt10">
+                                <div class="bgwh">
+                                    <div class="fbjuli  clearfix" style="padding-bottom: 0">
+                                        <div class="form-group mb10">
+                                            <div class="mb10">
+                                                <span class="red">*</span>
+                                                <span class="clname ">简介：</span>
+                                            </div>
+                                            <div >
+                                                <textarea id="editor_id" name="content" style="width:100%;height:350px;" placeholder="请输入要填写的内容">{$release_info.content}</textarea>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="rzjl">
+                                            <label class=" control-label rel xuzebt l" style="padding: 0">
+                                                <span class="red">*</span>
+                                                <span class="clname ">常用成型工艺：</span>
+                                            </label>
+                                            <div class="rel l">
+                                                <span class="tab"><a href="#">金属</a></span>
+                                                <a class="dropdown-toggle bghui" data-toggle="dropdown"
+                                                   aria-expanded="true">
+                                                    请选择材料</a>
+                                                <div class="dropdown-menu cailiao-tc ">
+                                                    <div class="search nomargin">
+                                                        <input name="moulding_process" placeholder="请输入标题" data-required="true"
+                                                               class="form-control " type="text">
+                                                        <div class="fdj"><i class="fa fa-search"></i></div>
+                                                    </div>
+                                                    <div class="findcl"><span class="g9">没有找到“金属”成型工艺，</span><a
+                                                            data_c="fun"
+                                                            class="g0"><b>创建成型工艺</b></a>
+                                                    </div>
+                                                    <div>
+                                                        <div class="qtclbt">其他类似：</div>
+                                                        <a href="#" class="lslink g9">PSA</a>
+                                                        <a href="#" class="lslink g9">POM</a>
+                                                        <a href="#" class="lslink g9"> PC</a>
+                                                        <a href="#" class="lslink g9">PP</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" rzjl">
+                                            <label class=" control-label rel xuzebt l" style="padding: 0">
+                                                <span class="red">*</span>
+                                                <span class="clname ">常用表面工艺：</span>
+                                            </label>
+                                            <div class="rel l">
+                                                <span class="tab"><a href="#">POM</a></span>
+                                                <a class="dropdown-toggle bghui" data-toggle="dropdown"
+                                                   aria-expanded="true">
+                                                    请选择材料</a>
+                                                <div class="dropdown-menu cailiao-tc ">
+                                                    <div class="search nomargin">
+                                                        <input placeholder="请输入标题" data-required="true"
+                                                               class="form-control " type="text" name="surface_process">
+                                                        <div class="fdj"><i class="fa fa-search"></i></div>
+                                                    </div>
+                                                    <div class="findcl"><span class="g9">没有找到“磨砂”表面工艺，</span><a
+                                                            data_c="fun"
+                                                            class="g0"><b>创建表面工艺</b></a>
+                                                    </div>
+                                                    <div>
+                                                        <div class="qtclbt">其他类似：</div>
+                                                        <a href="#" class="lslink g9">PSA</a>
+                                                        <a href="#" class="lslink g9">POM</a>
+                                                        <a href="#" class="lslink g9"> PC</a>
+                                                        <a href="#" class="lslink g9">PP</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="rzjl">
+                                            <label class=" control-label rel xuzebt l" style="padding: 0">
+                                                <span class="wh">*</span>
+                                                <span class="clname ">常用连接工艺：</span>
+                                            </label>
+                                            <div class="rel l">
+                                                <a class="dropdown-toggle bghui" data-toggle="dropdown"
+                                                   aria-expanded="true">
+                                                    请选择材料</a>
+                                                <div class="dropdown-menu cailiao-tc ">
+                                                    <div class="search nomargin">
+                                                        <input placeholder="请输入标题" data-required="true"
+                                                               class="form-control " type="text" name="join_process">
+                                                        <div class="fdj"><i class="fa fa-search"></i></div>
+                                                    </div>
+                                                    <div class="findcl"><span class="g9">没有找到“金属”连接工艺，</span><a
+                                                            data_c="fun"
+                                                            class="g0"><b>创建连接工艺</b></a>
+                                                    </div>
+                                                    <div>
+                                                        <div class="qtclbt">其他类似：</div>
+                                                        <a href="#" class="lslink g9">PSA</a>
+                                                        <a href="#" class="lslink g9">POM</a>
+                                                        <a href="#" class="lslink g9"> PC</a>
+                                                        <a href="#" class="lslink g9">PP</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        
+                                        <div class="form-group mb10">
+                                            <div class="rzjl">
+                                                <span class="red">*</span>
+                                                <span class="clname ">价格核算：</span>
+                                            </div>
+                                            <div class="m10">
+                                                <textarea type="text" placeholder=""
+                                                          class="form-control fbinput xg-height2" name="price_accounting">{$release_info.price_accounting}</textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="bgwh">
+                                    
+                                    <div class="fabu-num " style="padding-top: 10px;">
+
+                                        <div class="rzjl">
+                                            <div class="fabu-num1 clearfix effect"  style="width:100%;">
+                                                <div class="l per55" style="width:100%;">
+                                                    <div class="form-group clearfix">
+                                                        <label class="l control-label rel pt0">
+                                                            <span class="red">*</span>
+                                                            <span class="clname ">标签：</span>
+
+                                                        </label>
+                                                        {if condition="$release_info.effect"}
+                                                        {volist name="release_info.effect" id="eff"}
+                                                        <div class="l  m10">
+                                                            <input type="text" class="form-control fbinput cskuan " placeholder="磨砂" name="effect[]" value="{$eff}">
+                                                        </div>
+                                                        {/volist}
+                                                        {else/}
+                                                        <div class="l  m10">
+                                                            <input type="text" class="form-control fbinput cskuan " placeholder="磨砂" name="effect[]" value="">
+                                                        </div>
+                                                        <div class="l  ">
+                                                            <input type="text" class="form-control fbinput cskuan " placeholder="拉丝" name="effect[]">
+                                                        </div>
+                                                        <div class="l  m10">
+                                                            <input type="text" class="form-control fbinput cskuan " placeholder="防腐蚀" name="effect[]">
+                                                        </div>
+                                                        {/if}
+                                                        <div class="l control-label pt0" id="addEffect"><a href="javascript:;" class="g9 fs14">添加</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bdline ">
+                                            <span class="wh">*</span>
+                                            <span class="clname">参考文献：</span>
+                                            <div class="fbjuli1 m10">
+                                                <div class="per100 l zuijia  ">
+                                                    {volist name="release_info.reference" id="ref"}
+                                                    <div class="csbd clearfix">
+                                                        {volist name="ref" id="r" key='k'}
+                                                        <input type="text" class="form-control fbinput cskuan1 {$k==1?'l':'r'}" name="reference[]" value="{$r}">
+                                                        {/volist}
+                                                    </div>
+                                                    {/volist}
+                                                    <div class="csbd clearfix">
+                                                        <input type="text" class="form-control fbinput cskuan1 l" name="reference[]">
+
+                                                        <input type="text" class="form-control fbinput cskuan1 r" name="reference[]">
+                                                    </div>
+                                                    <div class="csbd clearfix">
+                                                        <input type="text" class="form-control fbinput cskuan1 l" name="reference[]">
+
+                                                        <input type="text" class="form-control fbinput cskuan1 r" name="reference[]">
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="rel">
+                                                    <div class="bangzhu2c">
+                                                        <div class="per100 l">
+                                                            <div class="csbd clearfix">
+                                                                <input type="text"
+                                                                       class="form-control fbinput cskuan1 l" name="reference[]">
+                                                                <input type="text"
+                                                                       class="form-control fbinput cskuan1 r" name="reference[]">
+                                                            </div>
+                                                            <div class="csbd clearfix">
+                                                                <input type="text"
+                                                                       class="form-control fbinput cskuan1 l" name="reference[]">
+                                                                <input type="text"
+                                                                       class="form-control fbinput cskuan1 r" name="reference[]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="addzu show anniu">添加一组</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group ">
+                                            <div class="l m10 mt5">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input class="checkbox" name="agree" type="checkbox"><span
+                                                            class="g9 fs14">我已阅读并接受</span>
+                                                        <a href="用户协议.html" class="red">《用户协议》</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="r mt10 m10">
+                                                <input type="hidden" value="0" id="drafts" name="draft">
+                                                <button class="btn  btn-regiest w80s mr5 button" type="button" data-draft="0">发布</button>
+                                                <button class="btn  btn-regiest w80s button" type="button" data-draft="1">存草稿</button>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div id="tab-2" class="tab-pane">
+                                <div class="case clearfix">
+                                    <ul>
+                                        <li>
+                                            <div class="file">
+                                                <div class="itembg">
+                                                    <div class="upedit ">
+                                                        <a href="javascript:;"><i class="fa fa-exchange"></i></a>
+                                                        <a href="javascript:;"><i class="fa fa-edit "></i></a>
+                                                        <a href="javascript:;">X</a>
+                                                    </div>
+                                                    <a href="工艺详情页.html" class="db">
+                                                        <div class="img-jq"
+                                                             style="background-image: url('__CDN__/assets/home/images/u1723.png')"></div>
+                                                    </a>
+                                                    <div class="bc-nr">
+                                                        <div class="clearfix bc-bt">
+                                                            <div class="r ">
+                                                                <div class="frjc12 l qw">权威</div>
+                                                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                                                    <i class="icon icon-logoh"></i>
+                                                                </a>
+                                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div class="bc-bt-n">电镀</div>
+                                                        </div>
+                                                        <div class="clearfix fenlei ">
+                                                            <div class="l bc-cz">
+                                                                <a href="工艺详情页.html">塑料</a>
+
+                                                            </div>
+                                                            <div class="r frjc12"></div>
+                                                        </div>
+                                                        <div class="gybq">
+                                                            <span>表面工艺</span>
+                                                        </div>
+                                                        <div class="cl">
+                                                            <div class="yb-icons box-icon">
+                                                                <div class="box-icongap">
+                                                                    <i class="icon icon-eye"></i><span
+                                                                        class="boxfs">5.5万</span>
+                                                                </div>
+                                                                <a class="dropdown-toggle" data-toggle="dropdown"
+                                                                   aria-expanded="true" title="添加到盒子里">
+                                                                    <div class="box-icongap">
+                                                                        <i class="icon icon-cube"></i><span
+                                                                            class="boxfs">5.5万</span>
+                                                                    </div>
+                                                                </a>
+                                                                <div class="dropdown-menu my-box ">
+                                                                    <div class="my-box-t">我的盒子</div>
+                                                                    <div class="my-box-list">
+                                                                        <ul>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red sel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red sel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i
+                                                                                    class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="input-group">
+                                                                                    <input type="text"
+                                                                                           class="form-control fs12"
+                                                                                           placeholder="输入名称">
+                                                                                    <span class="input-group-btn"> <button
+                                                                                            type="button"
+                                                                                            class="btn btn-danger">新建
+                                        </button> </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="javascript:;" title="收藏">
+                                                                    <div class="box-icongap"><i
+                                                                            class="icon icon-star"></i><span
+                                                                            class="boxfs">5.5万</span>
+                                                                    </div>
+                                                                </a>
+                                                                <a href="javascript:;" title="点赞">
+                                                                    <div class="box-icongap"><i
+                                                                            class="icon icon-thumbs-up"></i><span
+                                                                            class="boxfs">5.5万</span>
+                                                                    </div>
+                                                                </a>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="file">
+                                                <div class="itembg">
+                                                    <div class="empty">
+                                                        <a href="#" class="fbyb">添加工艺</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="tab-3" class="tab-pane">
+                                <div class="case clearfix">
+                                    <ul>
+                                        <li>
+                                            <div class="file">
+                                                <div class="itembg">
+                                                    <div class="upedit ">
+                                                        <a href="javascript:;"><i class="fa fa-exchange"></i></a>
+                                                        <a href="javascript:;"><i class="fa fa-edit "></i></a>
+                                                        <a href="javascript:;">X</a>
+                                                    </div>
+                                                    <a href="工艺详情页.html" class="db">
+                                                        <div class="img-jq" style="background-image: url('__CDN__/assets/home/images/u3110.png')"></div>
+                                                    </a>
+                                                    <div class="bc-nr">
+                                                        <div class="clearfix bc-bt">
+                                                            <div class="r ">
+                                                                <div class="frjc12 l qw">权威</div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div class="bc-bt-n">电镀</div>
+                                                        </div>
+                                                        <div class="clearfix fenlei ">
+                                                            <div class="l bc-cz">
+                                                                <a href="工艺设备详情页.html">注塑</a>
+
+                                                            </div>
+                                                            <div class="r frjc12"></div>
+                                                        </div>
+                                                        <div class="gybq">
+                                                            <span>工艺设备</span>
+                                                        </div>
+                                                        <div class="cl">
+                                                            <div class="yb-icons box-icon">
+                                                                <div class="box-icongap">
+                                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                                </div>
+                                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                                                    <div class="box-icongap">
+                                                                        <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                                    </div>
+                                                                </a>
+                                                                <div class="dropdown-menu my-box ">
+                                                                    <div class="my-box-t">我的盒子</div>
+                                                                    <div class="my-box-list">
+                                                                        <ul>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                                            </li>
+                                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                                            </li>
+                                                                            <li>
+                                                                                <div class="input-group">
+                                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                                <a href="javascript:;" title="收藏">
+                                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                                </a>
+                                                                <a href="javascript:;" title="点赞">
+                                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                                    </div>
+                                                                </a>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="file">
+                                                <div class="itembg">
+                                                    <div class="empty">
+                                                        <a href="#" class="fbyb">添加工艺设备</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+<script type="text/javascript">
+//参考文献再添加一组
+$(".addzu").click(function(){
+    if($(this).hasClass("addzhu")){
+        $(this).removeClass("addzhu");
+        $(".bangzhu2c").hide();
+    }else{
+        $(this).addClass("addzhu");
+        $(".bangzhu2c").show();
+    }
+})
+//发布样板
+var flag=false;
+$(".button").click(function(){
+    var name = $("input[name='name']").val();
+    if(name==''){
+        layer.msg('材料名称不能为空');
+        return false;
+    }
+    var content = editor.html();
+    $("#editor_id").val(content);
+    if(content==''){
+        layer.msg('内容不能为空');
+        return false;
+    }
+    if(!$("input[name='agree']").is(":checked")){
+        layer.msg('请先阅读用户协议并勾选该项');
+        return false;
+    }
+    var draft=$(this).attr('data-draft');
+    $("#drafts").val(draft);
+    if(flag){
+        //return false;
+    }
+    flag=true;
+    var form=$("#submit_form");
+    var fd=new FormData(form.get(0));
+    var url=form.attr('action');
+    $.ajax({
+        url:url,
+        type:form.attr('method'),
+        processData:false,
+        contentType:false,
+        async:false,
+        data:fd,
+        beforeSend: function(){
+
+        },
+        success: function(data){
+          console.log(data);
+          eval('data='+data+'');
+          if(data.code==1){
+             layer.msg(data.msg);
+             setTimeout(function(){window.location.reload(0);}, 1000);
+          }else{
+             layer.msg(data.msg);
+          }
+          
+        },
+        complete: function(){
+
+        }
+
+      })
+});
+</script>
+{include file="common/release" /}
+{include file="common/fooder" /}
+</body>
+</html> 

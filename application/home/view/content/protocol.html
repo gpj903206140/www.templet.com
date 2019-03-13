@@ -1,0 +1,58 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/content/help')}"> 帮助中心</a></li>
+                <li class="active"><a href="{:url('home/content/protocol')}">用户协议</a></li>
+                <li class=""><a href="{:url('home/content/userfeedback')}">用户反馈</a></li>
+            </ul>
+        </div>
+        <div class="fabu-content r">
+            <div class="bgwh fabu-num minh700 ">
+                <div class="middle-title-wrap border-bottom">
+                    <h2 class="middle-title">{$protocol.title}</h2>
+                </div>
+                <div class="protocol-box">
+                    {$protocol.content}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script type="text/html" id="func1_c">
+    <div class="clcjtk">
+        <div class="bt">材料<br>创建成功</div>
+        <div class="cjcg clearfix">
+            <ul>
+                <li><a id="close">继续<br>完善样板</a></li>
+                <li><a class="redbg" id="close2">完善<br>材料详情</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<script>
+    $(document).ready(function () {
+        $(".anniu").click(function () {
+            if ($(this).parent().find(".show").length > 0) {
+                $(this).removeClass('show');
+                $(this).addClass('hide1');
+                $(this).parent().find('.bangzhu2c').fadeIn();
+            } else {
+                $(this).removeClass('hide1');
+                $(this).addClass('show');
+                $(this).parent().find('.bangzhu2c').fadeOut();
+            }
+
+
+        });
+    });
+</script>
+
+{include file="common/fooder" /}
+</body>
+</html> 

@@ -1,0 +1,292 @@
+    <style>
+        .m10{
+            position: relative;
+        }
+        .nofind{
+            display: none;
+        }
+        .dropdown-menuss{
+            position: absolute;
+            left:0;
+            top:33px;
+            float:left;
+            background: #fff;
+            z-index:1000;
+            border-radius: 0;
+            box-shadow: 0 0 3px rgba(86, 96, 117, .3);
+            display: none;
+        }
+        
+        .effect .m10 {
+            margin: 0 10px 10px 10px;
+        }
+        .show_release{
+            width:100%;
+            float:left;
+        }
+        .show_release li{
+            width:100%;
+            height:30px;
+        }
+        .show_release li label{
+            width:100%;
+            height:30px;
+            line-height:30px;
+            font-size:12px;
+            color:#333;
+            background:url('__CDN__/assets/home/images/noselected.png') no-repeat  0 center;
+            background-size:15px 15px;
+            padding-left:7%;
+        }
+        .show_release li label.labelChecked{
+            background:url('__CDN__/assets/home/images/selected.png') no-repeat  0 center;
+            background-size:15px 15px;
+        }
+        .show_release li label:hover{
+            cursor:pointer;
+        }
+        .hidebox{
+            display:none;
+        }
+        .m10{
+            position: relative;
+        }
+        .checkedcon{
+            width:220px;
+            float:right;
+            position: absolute;
+            right:-10px;
+            top:-35px;
+            overflow: hidden;
+            background: #fff;
+            z-index:99;
+            border-radius: 0;
+            box-shadow: 0 0 3px rgba(86, 96, 117, .3);
+            padding:8px 3px 3px 3px;
+            display:none;
+        }
+        .checkedcon2{
+            height:30px;
+            overflow: hidden;
+            z-index:10;
+        }
+        .checkedcon3{
+            width:260px;
+            position: absolute;
+            left:125px;
+            top:0px;
+        }
+        .checkedcon span.divspan{
+            width:12px;
+            height:12px;
+            display:inline-block;
+            background: url('__CDN__/assets/home/images/stop.png') no-repeat right 0;
+            background-size:12px 12px;
+            position: absolute;
+            right:0;
+            top:0;
+        }
+        .checkedcon span.divspan2{
+            background: url('__CDN__/assets/home/images/open.png') no-repeat right 0;
+            background-size:12px 12px;
+        }
+        .checkedcon li{
+            width:100px;
+            height:35px;
+            line-height:35px;
+            text-align:center;
+            float:left;
+            position: relative;
+            overflow:hidden;
+            font-size:12px;
+            color:#666;
+        }
+        .checkedcon3 li{
+            width:120px;
+        }
+        .checkedcon li span.lispan{
+            width:20px;
+            height:20px;
+            display:inline-block;
+            background: url('__CDN__/assets/home/images/del.png') no-repeat right 0;
+            background-size:12px 12px;
+            position: absolute;
+            right:0;
+            top:0;
+        }
+        .checkedcon li span.lispan:hover,.checkedcon span.divspan:hover,.fdjsearch:hover,.dropdown-sq:hover{
+            cursor: pointer;
+        }
+        .dropdown-sq{
+            width:20px;
+            height:20px;
+            display:inline-block;
+            background: url('__CDN__/assets/home/images/stop.png') no-repeat right 0;
+            background-size:12px 12px;
+            position: absolute;
+            right:0;
+            top:0;
+        }
+        .dropdown-sq2{
+            background: url('__CDN__/assets/home/images/open.png') no-repeat right 0;
+            background-size:12px 12px;
+        }
+        .fbm10 .form-control.fbinput {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="__CDN__/assets/home/js/uploadPreview.js"></script>
+
+<script charset="utf-8" src="__CDN__/assets/home/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__CDN__/assets/home/kindeditor/lang/zh-CN.js"></script>
+    <script type="text/javascript">
+    window.onload = function () {
+        new uploadPreview({UpBtn: "up_imga", DivShow: "imgdiva", ImgShow: "imgShowa"});
+    };
+</script>
+<script>
+    KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+    });
+</script>
+<script type="text/javascript">
+//搜索框右边展开或收起已选中的信息
+$("body").on("click",".dropdown-sq",function(){
+        $(this).parents(".dropdown-menuss").hide();
+        $(this).removeClass("tshow");
+        $(this).parents(".dropdown-menuss").siblings(".dropdown-toggle").removeClass("tshow");
+})
+//展开或收起已选中的信息
+$("body").on("click",".checkedcon span.divspan",function(){
+     if($(this).hasClass("divspan2")){
+         $(this).removeClass("divspan2");
+         $(this).parents(".checkedcon").addClass("checkedcon2");
+     }else{
+        $(this).addClass("divspan2");
+        $(this).parents(".checkedcon").removeClass("checkedcon2");
+     }
+})
+//搜索为空时点击其他类似, 选择&取消选择材料等信息
+$("body").on("click",".similar a",function(){
+   var field=$(this).parents(".similar").siblings(".show_release").attr('data-field');
+   var parent=$(this).parents(".dropdown-menuss").siblings('.checkedcon').find('ul');
+   var checkedcon=$(this).parents(".dropdown-menuss").siblings('.checkedcon');
+   var tid=$(this).attr('data-likenessid');
+   var name=$(this).attr('data-likenessname');
+   if($(this).hasClass("labelChecked")){
+       $(this).removeClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+   }else{
+       $(this).addClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+       var html='';
+       html='<li class="lis'+tid+'">'+name+'<input type="hidden" value="'+tid+'" name="'+field+'['+tid+'][id]"><input type="hidden" value="'+name+'" name="'+field+'['+tid+'][name]"><span class="lispan"></span></li>';
+       parent.prepend(html);
+       checkedcon.show();
+   }
+})
+//删除已选中的材料等信息
+$("body").on("click",".lispan",function(){
+    $(this).parent().remove();
+})
+//搜索出信息后选择&取消选择材料等信息
+$("body").on("click",".show_release label",function(){
+   var field=$(this).parents(".show_release").attr('data-field');
+   var parent=$(this).parents(".dropdown-menuss").siblings('.checkedcon').find('ul');
+   var checkedcon=$(this).parents(".dropdown-menuss").siblings('.checkedcon');
+   var id=$(this).attr('for');
+   var tid=$("#"+id).val();
+   var name=$("#shows"+tid).val();
+   if($(this).hasClass("labelChecked")){
+       $(this).removeClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+   }else{
+       $(this).addClass("labelChecked");
+       var html='';
+       parent.find(".lis"+tid).remove();
+       html='<li class="lis'+tid+'" title="'+name+'">'+name+'<input type="hidden" value="'+tid+'" name="'+field+'['+tid+'][id]"><input type="hidden" value="'+name+'" name="'+field+'['+tid+'][name]"><span class="lispan"></span></li>';
+       parent.prepend(html);
+       checkedcon.show();
+   }
+})
+//显示或隐藏搜索
+$(".dropdown-toggle").click(function(){
+    if($(this).hasClass("tshow")){
+        //$(".dropdown-menuss").removeClass("tshow");
+        $(this).removeClass("tshow");
+        $(this).siblings(".dropdown-menuss").hide();
+    }else{
+        $(".dropdown-toggle").removeClass("tshow");
+        $(".dropdown-menuss").hide();
+        $(this).addClass("tshow");
+        $(this).siblings(".dropdown-menuss").show();
+    }
+    
+})
+
+
+//点击搜索图标搜索材料等
+$("body").on("click",".fdjsearch",function(){
+    var type=$(this).attr('data-type');
+    var val=$(this).siblings(".getInfo").val();
+    seach_release($(this),type,val);
+})
+//回车搜索材料等
+$('.getInfo').keydown(function(e){
+    if(e.keyCode==13){
+       var type=$(this).attr('data-type');
+       var val=$(this).val();
+       seach_release($(this),type,val);
+    }
+});
+function seach_release(obj,type,val){
+   if(val==''){
+      layer.msg('请输入搜索关键字');
+      return false;
+   }
+   var url="{:url('home/release/getRelease_info')}";
+   var parent=obj.parent().siblings('.show_release').find('ul');
+   var parent2=obj.parent().siblings('.nofind').find('.similar');
+   var parent3=obj.parent().siblings('.nofind').find('.findcl span.nofindname');
+
+   $.post(url,{type:type,val:val},function(data){
+     eval('data='+data+'');
+     var html='';
+     if(data.length>0){
+        for(var i=0;i<data.length;i++){
+            html+='<li>';
+            html+='<input type="checkbox" id="show'+data[i]['id']+'" class="hidebox" value="'+data[i]['id']+'"><input type="hidden" id="shows'+data[i]['id']+'" value="'+data[i]['name']+'">';
+            html+='<label for="show'+data[i]['id']+'">'+data[i]['name']+'</label>';
+            html+='</li>'; 
+        }
+     }else{
+        $.post(url,{state:1,type:type},function(result){
+             eval('result='+result+'');
+             var html2='<div class="qtclbt">其他类似：</div>';
+             for(var i=0;i<result.length;i++){
+                html2+='<a href="javascript:;" class="lslink g9" data-likenessid="'+result[i]['id']+'"  data-likenessname="'+result[i]['name']+'">'+result[i]['name']+'</a>&nbsp;&nbsp;&nbsp;';
+            }
+            parent3.html(val);
+            parent2.html(html2);
+            $(".nofind").show();
+        })
+     }
+     parent.html(html);
+     $(".nofind").hide();
+   })
+}
+
+</script>
+
+<script>
+   //添加标签
+    $("#addEffect").click(function(){
+        var val='<div class="l  m10"><input type="text" class="form-control fbinput cskuan " placeholder="" name="effect[]"></div>';
+        $(this).before(val);
+    })
+    //添加别名
+    $(".addalias").click(function(){
+        var val='<input type="text" class="form-control fbinput w200" name="alias[]" style="margin-bottom:10px;">';
+        $(this).siblings(".m10").append(val);
+    })
+</script>

@@ -1,0 +1,114 @@
+<body>
+<header class="bs-docs-nav navbar navbar-static-top" id="top">
+    <div class="container clearfix">
+        <h1 class="logo">
+            <a href="{:url('home/index/index')}">
+                <img alt="" src="__CDN__/assets/home/images/logo.png"/>
+            </a>
+        </h1>
+
+        <div class="login">
+            {if condition="$home_user.id gt 0"}
+                <div class="l rel">
+                    <a href="javascript:;" class="count-info bell dropdown-toggle" data-toggle="dropdown"
+                       aria-expanded="true">
+                        <span class="label badge badge-danger">5</span>
+                        <i class="fa fa-bell-o top"></i>
+                    </a>
+                    <ul class="dropdown-menu bell-infor">
+                        <div class="m-t-xs bt clearfix">
+                            <div class="l">消息</div>
+                            <div class="r"><a href="javascript:;" class="qk">清空</a></div>
+                        </div>
+                        <li>
+                            <a href="消息.html">【公告】我们对《用户协议》进行了部分修正，以便更符合实际情况。</a>
+                        </li>
+                        <li>
+                            <a href="消息.html"> 【关注】遗忘的梵高关注了你</a>
+                        </li>
+                        <li>
+                            <a href="消息.html">【系统】您发布的样板GSD1236566通过了审核</a>
+                        </li>
+
+                        <div class="text-center ckqb ">
+                            <a href="消息.html">
+                                <i class="fa fa-envelope"></i> 查看全部
+                            </a>
+                        </div>
+                    </ul>
+                </div>
+                <div class="l rel">
+                    <a href="javascript:;" class="adver-img dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <img alt="image" class="img-circle" src="__CDN__/assets/home/images/tx.jpg">
+                    </a>
+                    <ul class="dropdown-menu bell-infor caidan">
+                        {if condition="$home_user.user_type eq 0"}
+                        <li>
+                            <a href="{:url('home/user/user_home')}"><b>个人主页</b></a>
+                        </li>
+                        {else/}
+                        <li>
+                            <a href="{:url('home/user/user_home')}"><b>个人主页</b></a>
+                        </li>
+                        <li>
+                            <a href="{:url('home/business/business_home')}"><b>企业主页</b></a>
+                        </li>
+                        {/if}
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{:url('home/business/my_business')}">我的企业</a>
+                        </li>
+                        <li>
+                            <a href="我的订单.html">我的订单</a>
+                        </li>
+                        <li>
+                            <a href="偏好设置.html">偏好设置</a>
+                        </li>
+                        <li>
+                            <a href="账号安全.html">账号安全</a>
+                        </li>
+                        <li>
+                            <a href="{:url('home/content/help')}">帮助中心</a>
+                        </li>
+                        <li>
+                            <a href="企业服务.html">企业服务</a>
+                        </li>
+                        <li>
+                            <a href="{:url('home/content/about_us')}">关于我们</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="loginOut">退出</a>
+                        </li>
+                    </ul>
+                </div>
+            {else/}
+                <div class="zc">
+                    <a  href="{:url('home/login/sign')}">登录</a>| <a href="{:url('home/login/register')}">注册</a>
+                </div>
+            {/if}
+            
+
+            
+        </div>
+        <nav>
+            <div class="menu clearfix">
+                <div class="l">
+                    <li class="cd "><a href="{:url('home/master/tmplate_list')}?release_type=1"><span>样板</span></a></li>
+                    <li class="cd"><a href="{:url('home/master/tmplate_list')}?release_type=2"><span>材料</span></a></li>
+                    <li class="cd"><a href="{:url('home/master/tmplate_list')}?release_type=3"><span>工艺</span></a></li>
+                </div>
+                <div class="r">
+                    <li class="cd"><a href="探索主页.html"><span>探索</span></a></li>
+                    <li class="cd"><a href="javascript:;"><span>购买</span></a></li>
+                    <li class="upload"><a href="{:url('home/release/tmplate')}"><i class="icon icon-upload"></i></a></li>
+                </div>
+                <div class="search">
+                    <input type="text" name="username" placeholder="请输入标题" data-required="true" class="form-control ">
+                    <div class="fdj"><i class="fa fa-search"></i></div>
+                </div>
+
+            </div>
+        </nav>
+
+    </div>
+</header>

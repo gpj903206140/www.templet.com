@@ -1,0 +1,32 @@
+<?php
+
+return [
+    'Id'  =>  'ID',
+    'User_id'  =>  '申请人id',
+    'Name'  =>  '企业/组织',
+    'Logo'  =>  '企业LOGO',
+    'License_image'  =>  '营业执照',
+    'Mobile'  =>  '手机',
+    'Email'  =>  'email',
+    'Qq'  =>  'QQ',
+    'Wechat'  =>  '微信',
+    'Id_just'  =>  '身份证正面照',
+    'Id_back'  =>  '身份证反面照',
+    'Credit_code'  =>  '统一社会信用代码',
+    'Legal'  =>  '法定代表人',
+    'Office'  =>  '登记机关',
+    'Found_date'  =>  '成立日期',
+    'Enroll'  =>  '注册资金',
+    'Enroll_address'  =>  '注册地址',
+    'Main_products'  =>  '主营产品或服务',
+    'Company_type'  =>  '企业类型',
+    'Machining'  =>  '生产加工',
+    'Device'  =>  '设备制造',
+    'Main_market'  =>  '主营市场',
+    'Staff_num'  =>  '员工人数',
+    'Office_area'  =>  '办公面积',
+    'Major_customers'  =>  '主要客户',
+    'Preference'  =>  '企业偏好',
+    'Trial'  =>  '认证审核状态 0 待审核  1 审核通过  2审核不通过',
+    'Addtime'  =>  '添加时间'
+];

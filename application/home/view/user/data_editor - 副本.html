@@ -1,0 +1,291 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w">
+        <div class="grzy-top clearfix">
+            <div class="r grzy-num clearfix">
+                <ul>
+                    <li><span class="fs36">3556</span><br>人气</li>
+                    <li><span class="fs36">356</span><br>粉丝</li>
+                    <li><span class="fs36">356</span><br>发布</li>
+                </ul>
+            </div>
+            <div class="">
+                <div class="grtx l">
+                    <div class="grtx-edit rel">
+                        <a href="修改头像.html" data_c="edit">
+                            <div class="edit-tx shows" style="display: none">修改头像</div>
+                            <div class="txzhe"></div>
+                            <img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80">
+                        </a>
+                    </div>
+                    <button class="btn  btn-regiest w80 " type="submit">关注</button>
+                </div>
+                <div class="grxinxi">
+                    <div class="gr-name">王泽林</div>
+                    <div class="inform g9 ">
+                        <div class="tab l">工业设计师</div>
+                        <div class="fahg l">
+                            <i class="icon icon-boshi l"></i>
+                            <a href="javascript:;"> <i class="fa fa-wechat m5"></i></a>
+                            <a href="javascript:;"><i class="fa fa-qq m5"></i></a>
+                            <a href="资料编辑.html"><i class="fa fa-edit m5"></i></a>
+                        </div>
+                    </div>
+                    <div class="gr-comany">
+                        <a href="javascript:;" class="com-name"> 杭州托普科技有限公司</a>
+                        <a href="javascript:;" class="shengchanjg">生产代工</a> | <a href="javascript:;"
+                                                                                 class="shengchanjg">设备制造</a>
+                    </div>
+                    <div class="inform mb0 clearfix">
+                        <div class="l gxqm">也许他文采不好，到现在都没有想到有创意的个性签名！</div>
+                        <a href="资料编辑.html"><i class="fa fa-edit m5 qm-edit"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabs-container switch grzy">
+        <div class="navbg ">
+
+            <div class="r kulj "><a href="javascript:;" class="redhx ">个人信息</a></div>
+            <ul class="nav nav-tabs redline">
+                <li class="cmfku grzl-t "><a data-toggle="tab" href="#tab-10" aria-expanded="true"> 他的CMF库</a>
+                </li>
+                <li class="active"><a href="个人信息.html"> 他的资料</a>
+                </li>
+                <li class=""><a href="他的关注.html">他的关注 </a>
+                </li>
+                <li class=""><a href="他的粉丝.html"> 他的粉丝</a>
+                </li>
+            </ul>
+        </div>
+        <div class=" tab-content">
+
+            <div class="main-w bgwh yj5 jobnr rel mb10">
+                <div class="tjclbt">
+                    <div class="bt">基本信息：<span class="g9 fs14">(所有人可见)</span></div>
+                </div>
+                <div class="gr-edit">
+                    <a href="{:url('home/user/user_info')}" class="close-fs">X</a>
+                </div>
+                <form action="{:url('home/user/data_editor')}" method="post" id="form">
+                <div class="grmess">
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">用户名：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="王泽明" name="username" value="{$user_info.username}" id="username">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">职业：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="工业设计师" name="vocation" value="{$user_info.vocation}" id="vocation">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">性别：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input type="radio" name="gender" value="0"{$user_info['gender']==0?'checked':''}>&nbsp;男&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="gender" value="1" {$user_info['gender']==1?'checked':''}>&nbsp;女
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">家乡：</span>
+                        </label>
+                        <div class="l  m10">
+                            <select type="text" class="form-control w200 " name="hometown1" id="province1" style="float:left;">
+                                <option value="0">请选择省份</option>
+                                {volist name="area" id="vo"}
+                                <option value="{$vo.id}">{$vo.name}</option>
+                                {/volist}
+                            </select>
+                            <select type="text" class="form-control w200 " name="hometown2"  id="area1" style="float:left;margin-left:10px;">
+                                <option value="0">请选择地区</option>
+                                
+                            </select>
+                            <select type="text" class="form-control w200 " name="hometown3" id="city1" style="float:left;margin-left:10px;">
+                                <option value="0">请选择城市</option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">现居：</span>
+                        </label>
+                        <div class="l  m10">
+                            <select type="text" class="form-control w200 " name="nhom">
+                                <option>杭州</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">领域：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="家用电器" name="domain" value="{$user_info.domain}" id="omain">
+                        </div>
+                        <div class="l"><a href="javascript:;" class="add">添加</a></div>
+                    </div>
+                </div>
+                <div class="tjclbt">
+                    <div class="bt">联系方式：<span class="g9 fs14">(所有人可见)</span></div>
+                </div>
+                <div class="grmess">
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">电话：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="0571-86926071" name="phone" value="{$user_info.phone}" id="phone">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">手机：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="15863638997" name="mobile" value="{$user_info.mobile}" id="mobile">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">邮箱：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="15863638997@qq.com" name="email" value="{$user_info.email}" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">ＱＱ：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="15863638997" name="qq" value="{$user_info.qq}" id="qq">
+                        </div>
+                        <div class="l"><span class="g9 fs14">(用户可以给你发起QQ临时会话)</span></div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <label class="l control-label rel">
+                            <span class="clname">微信：</span>
+                        </label>
+                        <div class="l  m10">
+                            <input class="form-control clinput  w200" type="text" placeholder="15863638997" name="wechat" value="{$user_info.wechat}" id="wechat">
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                       
+                        <div class="l  m10" style="">
+                            <input type="button" value="保存" id="send" style="width:100px;height:40px;font-size:16px;color:#fff;background: #f00;line-height:40px;text-align:center;border-radius:5px;border:none;margin-left:20px;">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </form>
+
+        </div>
+    </div>
+    <script>
+        //家乡 获取地区信息
+        $("#province1").change(function(){
+             var pid = $(this).find("option:selected").val();
+             var url="{:url('home/user/get_city')}";
+             $.post(url,{pid:pid},function(data){
+                eval('data='+data+'');
+                var html='<option value="0">请选择地区</option>';
+                for(var i=0;i<data.length;i++){
+                     html+='<option value="'+data[i]['id']+'">'+data[i]['name']+'</option>';
+                }
+                $("#area1").html(html);
+             })
+        })
+        //家乡 获取城市信息
+        $("body").on("change","#area1",function(){
+             var pid = $(this).find("option:selected").val();
+             var url="{:url('home/user/get_city')}";
+             $.post(url,{pid:pid},function(data){
+                eval('data='+data+'');
+                var html='<option value="0">请选择城市</option>';
+                for(var i=0;i<data.length;i++){
+                     html+='<option value="'+data[i]['id']+'">'+data[i]['name']+'</option>';
+                }
+                $("#city1").html(html);
+             })
+        })
+        //修改个人信息
+        $("#send").click(function(){
+            var username=$("#username").val(); //用户名
+            var vocation=$("#vocation").val(); //职业
+            var gender=$("input[name='gender']:checked").val();//性别
+            
+            //家乡
+            var province1=$("#province1").find('option:selected').val();
+            var province11=$("#province1").find('option:selected').text();
+
+            var area1=$("#area1").find('option:selected').val();
+            var area11=$("#area1").find('option:selected').text();
+
+            var city1=$("#city1").find('option:selected').val();
+            var city11=$("#city1").find('option:selected').text();
+
+            var domain=$("#domain").val(); //领域
+            var phone=$("#phone").val(); //电话
+            var mobile=$("#mobile").val(); //手机号
+            var email=$("#email").val(); //邮箱
+            var qq=$("#qq").val(); //QQ
+            var wechat=$("#wechat").val(); //微信
+
+
+            var form=$("#form");
+            var fd=new FormData(form.get(0));
+            var url=form.attr('action');
+              var province1=$("#province1").find("option:selected").text();
+              fd['namesss'] = 'ddd';
+              $.ajax({
+                url:url,
+                type:form.attr('method'),
+                processData:false,
+                contentType:"json",
+                async:false,
+                data:{username:username,vocation:vocation,gender:gender,province1:province1,
+                      province11:province11,area1:area1,area11:area11,city1:city1,city11:city11,
+                      domain:domain,phone:phone,mobile:mobile,email:email,
+                      qq:qq,wechat:wechat},
+                beforeSend: function(){
+
+                },
+                success: function(data){
+                    var myjson='';
+                    eval('myjson='+data+'');
+                    if(myjson.code>0){
+                        layer.msg(myjson.msg);
+                        
+                        setTimeout(function(){window.location.href=document.referrer;}, 1000);
+                    }else{
+                        layer.msg(myjson.msg);
+                    }
+                },
+                complete: function(){
+
+                }
+
+              })
+        })
+    
+    </script>
+    {include file="common/fooder" /}
+
+</body>
+</html> 

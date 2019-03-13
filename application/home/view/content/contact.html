@@ -1,0 +1,92 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <title>CMFYB</title>
+    <meta name="keywords" content="CMFYB样板"/>
+    <meta name="description" content="CMFYB样板"/>
+
+    <link type="text/css" rel="stylesheet" href="__CDN__/assets/home/css/iconfont.css"/>
+    <link href="__CDN__/assets/home/bootstrap/css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="__CDN__/assets/home/bootstrap/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CDN__/assets/home/bootstrap/css/style.min.css?v=4.0.0" rel="stylesheet">
+    <link href="__CDN__/assets/home/css/demo.css" rel="stylesheet" media="all"/>
+    <link rel="stylesheet" href="__CDN__/assets/home/css/main.css"/>
+    <link rel="stylesheet" href="__CDN__/assets/home/css/cmfyb.css"/>
+    <!-- <script src="js/jquery-1.11.1.min.js"></script>-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+
+</head>
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/content/about_us')}">关于我们</a></li>
+                <li class=""><a href="{:url('home/content/recruit')}">诚聘英才</a></li>
+                <li class="active"><a href="{:url('home/content/contact')}">联系我们</a></li>
+            </ul>
+        </div>
+        <div class="fabu-content r">
+            <div class="bgwh fabu-num minh740" style="float:left;">
+                <div class="middle-title-wrap border-bottom">
+                    <h2 class="middle-title">联系我们</h2>
+                </div>
+                <div class="map l" id="dituContent"></div>
+                <div class="contact l">
+                    <ul>
+                        {if condition="$data"}
+                        {volist name="data" id="item"}
+                        <li>
+                            {$item.title}：<br>
+                            QQ：{$item.qq}&nbsp;&nbsp;&nbsp;&nbsp;Email：{$item.email}<br>
+                            地址：{$item.address}
+                            <div class="clearfix">
+                                <div class="r">
+                                    <a class="btn  btn-qq  l ">QQ</a>
+                                    <div class="rel circle l">
+                                        <a href="javascript:;" data_c="ShowInfo" data_s="EWM1"><i
+                                                class="fa fa-wechat"></i>
+                                        </a>
+                                        <div class=" upjt " id="EWM1" style="display: none;">
+                                            <div class="arrow "></div>
+                                            <img src="{$item.image}"><br>分享到微信
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {/volist}
+                        {/if}
+                        
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+<script type="text/javascript" src="__CDN__/assets/home/js/map.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+
+
+<script type="text/javascript">
+
+    $('[data_c="ShowInfo"]').hover(function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).show();
+    }, function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).hide();
+    });
+</script>
+
+{include file="common/fooder" /}
+</body>
+</html> 

@@ -1,0 +1,265 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+<div class="main-w">
+    <div class="grzy-top clearfix">
+        <div class="r grzy-num clearfix">
+            <ul>
+                <li><span class="fs36">{$user_info.popularity}</span><br>人气</li>
+                <li><span class="fs36">{$user_info.fans}</span><br>粉丝</li>
+                <li><span class="fs36">{$user_info.release}</span><br>发布</li>
+            </ul>
+        </div>
+        <div class="">
+            <div class="grtx l">
+                <div class="grtx-edit rel">
+                    <a href="{:url('home/user/avatar_editor')}" data_c="edit">
+                        <div class="edit-tx shows" style="display: none">修改头像</div>
+                        <div class="txzhe"></div>
+                        {if condition="$user_info.avatar eq ''"}
+                        <img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80">
+                        {else/}
+                        <img src="{$user_info.avatar}" class="tximg w80" style="width:80px;height:80px;border-radius:50%;">
+                        {/if}
+                    </a>
+                </div>
+                <button class="btn  btn-regiest w80 " type="submit">关注</button>
+            </div>
+            <div class="grxinxi">
+                <div class="gr-name">{$user_info.username}</div>
+                <div class="inform g9 ">
+                    <div class="tab l">{$user_info.vocation}</div>
+                    <div class="fahg l">
+                        <i class="icon icon-boshi l"></i>
+                        <a href="javascript:;"> <i class="fa fa-wechat m5"></i></a>
+                        <a href="javascript:;"><i class="fa fa-qq m5"></i></a>
+                        <a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5"></i></a>
+                    </div>
+                </div>
+                <div class="gr-comany">
+                    <a href="javascript:;" class="com-name"> {$user_info.business.name}</a>
+                    <!-- <a href="javascript:;" class="shengchanjg">生产代工</a> | <a href="javascript:;" class="shengchanjg">设备制造</a> -->
+                    {if condition="$user_info.domain"}
+                    {volist name="$user_info.domain" id="d" key="k"}
+                    <a href="javascript:;" class="shengchanjg">{$d}</a> {if condition="$user_info.domain_count gt $k"}|{/if}
+                    {/volist}
+                    {/if}
+                </div>
+                <div class="inform mb0 clearfix">
+                    <div class="l gxqm">{if condition="$user_info.bio"}<span style="color:#333;">{$user_info.bio}</span>{else/}也许他文采不好，到现在都没有想到有创意的个性签名！{/if}</div>
+                    <a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 qm-edit"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="tabs-container switch grzy">
+        <div class="navbg ">
+            <div class="r kulj1"><a href="个人信息.html" class="redhx nohx">个人信息</a></div>
+            <ul class="nav nav-tabs redline">
+                <li class="cmfku "><a href="个人主页.html"> 他的CMF库</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=1"> 样板</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=2">材料 </a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=3"> 工艺</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=4"> 工艺设备</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=5"> 案例</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=6"> 视频</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=7"> 文章</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=8">问答</a>
+                </li>
+                <li class=""><a href="{:url('home/user/user_release')}?type=9"> CMF盒子</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class=" tab-content">
+            <div class="tab-pane active">
+                <div class="clearfix fbde">
+                    <div class="l">
+                        <a href="javascript:;" class="fbde-btn">他发布的</a>
+                        <a href="javascript:;" class="fbde-btn">他收藏的</a>
+                    </div>
+                    <div class="r g9">
+                        共计 17 个内容
+                    </div>
+                </div>
+                <div class="container">
+                    {volist name="release_info" id="item"}
+                    {if condition="$release_type eq 1 || $release_type eq 5 || $release_type eq 6 || $release_type eq 7 || $release_type eq 8"}
+                    <div class="file-box">
+                        <div class="file">
+                            <div class="itembg">
+                                <div class="upedit ">
+                                    <a href="javascript:;"><i class="fa fa-exchange"></i></a>
+                                    <a href="{:url($release_rul[$item.part])}?id={$item.id}"><i class="fa fa-edit "></i></a>
+                                    <a href="{:url('home/release/del_release')}?id={$item.id}" class="delRelease">X</a>
+                                </div>
+                                <a href="样板详情页.html" class="db">
+                                    {if condition="$item.cover_image neq ''"}
+                                    <div class="img-jq" style="background-image: url('{$item.cover_image}')"></div>
+                                    {else/}
+                                    <div class="img-jq" style="background-image: url('__CDN__/assets/home/images/noimage.png') ;background-size:100% 100%; "></div>
+                                    {/if}
+                                </a>
+                                <div class="bc-nr">
+                                    <div class="clearfix bc-bt">
+                                        <div class="r">
+                                            <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                                <i class="icon icon-hua"></i>
+                                            </a>
+                                            <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                                <i class="icon icon-logoh"></i>
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="bc-bt-n">{$item.name}</div>
+                                    </div>
+                                    <div class="clearfix fenlei ">
+                                        <div class="l bc-cz">
+                                            <span class="yb-yj">{$item.part_name}</span> <a href="样板详情页.html">蚀纹</a> <a href="样板详情页.html">ABC</a>
+                                        </div>
+                                        <div class="r frjc12">精华</div>
+                                    </div>
+                                    <div class="yb-icons box-icon">
+                                        <div class="box-icongap">
+                                            <i class="icon icon-eye"></i><span class="boxfs">{$item.browse}</span>
+                                        </div>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里" >
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">{$item.addbox}</span>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu my-box ">
+                                            <div class="my-box-t">我的盒子</div>
+                                            <div class="my-box-list">
+                                                <ul>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                    </li>
+                                                    <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                            <span
+                                                                    class="input-group-btn"> <button type="button"
+                                                                                                     class="btn btn-danger">新建
+                                        </button> </span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <a href="javascript:;" title="收藏" >
+                                            <div class="box-icongap"><i class="icon icon-star"></i><span
+                                                    class="boxfs">{$item.collection}</span></div>
+                                        </a>
+                                        <a href="javascript:;" title="点赞" >
+                                            <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">{$item.praise}</span>
+                                            </div>
+                                        </a>
+                                        <div class="box-icongap"><i class="icon icon-comment"></i><span
+                                                class="boxfs">{$item.discuss}</span></div>
+
+                                    </div>
+                                    <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">{$item.user.username}</a>&nbsp;<a
+                                                href="企业信息.html">{$item.business.name}</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {elseif condition="$release_type eq 2 || $release_type eq 3 || $release_type eq 4"/}
+
+                    {else/}
+                    333
+                    {/if}
+                    {/volist}
+                    <div class="file-box">
+                        <div class="file">
+                            <div class="itembg">
+                                <div class="empty">
+                                    <a href="发布案例.html" class="fbyb">发布样板</a>
+                                </div>
+                                <div class="bc-nr h0">
+                                    <div class="yb-icons"></div>
+                                    <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    $(".delRelease").click(function(){
+        var url=this.href;
+        var parent=$(this).parents(".file-box");
+        layer.open({
+            content: '是否确定删除！',
+            btn: ['确认', '取消'],
+            yes: function(index, layero) {
+                $.get(url,function(data){
+                    if(data==1){
+                        layer.msg('删除成功');
+                        parent.remove();
+                    }else{
+                        layer.msg('删除失败');
+                    }
+                    layer.close(index);
+                })
+            },
+            btn2: function(index, layero) {
+
+            }
+            ,
+            cancel: function() {
+                //右上角关闭回调
+
+            }
+        });
+        return false;
+    })
+    </script>
+    {include file="common/fooder" /}
+</body>
+</html> 

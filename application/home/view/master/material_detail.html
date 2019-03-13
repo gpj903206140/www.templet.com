@@ -1,0 +1,2194 @@
+{include file="common/headPath" /}
+<body>
+
+<div class="ybxiangqing clearfix">
+    <div class="main">
+        <div class="jianjie">
+            <div class="bt-bar clearfix ">
+                <div class="bt"> {$release_detail.name}</div>
+                <div class="bie-name"> 别名：
+                <span class="tab">
+                {volist name="release_detail.alias" id="ali" key="k"}
+                {$ali}{if condition="isset($release_detail['alias'][$k])"} -{/if}
+                {/volist}
+                </span></div>
+                <div class="jj-icons ">
+                    <ul>
+                        <li class="circle">
+                            <a href="javascript:;" data_c="ShowInfo" data_s="EWM1"><i class="fa fa-wechat"></i> </a>
+                            <div class=" upjt " id="EWM1">
+                                <div class="arrow "></div>
+                                <img src="__CDN__/assets/home/images/erwm.jpg"><br>分享到微信
+                            </div>
+                        </li>
+                        <li class="circle">
+                            <a href="javascript:;" title="复制链接"><i class="fa fa-link"></i> </a>
+                        </li>
+                        <!-- <li>
+                            <a href="{:url('home/master/attitude')}?status=4&release_id={$release_detail['id']}" title="添加到盒子里" class="addattitude" data-msg="已加入盒子"><i class="fa fa-cube"></i><span class="status">{$release_detail.addbox}</span> </a><span class="status">
+                        </li> -->
+                        <li>
+                        <div class="yb-icons yb-icons2 box-icon boxparent">
+                            <div class="box-icongap boxopen">
+                            <a class="dropdown-toggle {$is_status[3]?'showbg':''}" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里" >
+                                <div class="box-icongap">
+                                    <i class="fa fa-cube"></i><span class="boxstatus" style="font-size:14px;">{$release_detail.addbox}</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu my-box">
+                                <div class="my-box-t">我的盒子</div>
+                                <div class="my-box-list">
+                                    <ul>
+                                        {volist name="box" id="b"}
+                                        <li><a href="{:url('home/master/attitude')}?status=4&release_id={$release_detail['id']}&sid={$b.id}" class="addattitude2"><i class="fa fa-cube red icon-cube3 {$b['count']==0?'nosel':'sel'}"></i>{$b.name}</a>
+                                        </li>
+                                        {/volist}
+                                        
+                                        <li class="tops"></li>
+                                        <li>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control fs12 boxval" placeholder="输入名称">
+                                                <span
+                                                        class="input-group-btn"> <button type="button"
+                                                                                         class="btn btn-danger addbox" data-link="{:url('home/master/attitude')}?status=4&release_id={$release_detail['id']}">新建
+                                        </button> </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="{:url('home/master/attitude')}?status=3&release_id={$release_detail['id']}" title="收藏人数" class="addattitude {$is_status[2]?'showbg':''}" data-msg="收藏"><i class="fa fa-star"></i><span class="status">{$release_detail.collection}</span> </a>
+                        </li>
+                        <li>
+                            <a href="{:url('home/master/attitude')}?status=2&release_id={$release_detail['id']}" title="点赞人数" class="addattitude {$is_status[1]?'showbg':''}" data-msg="赞了一下"><i class="fa fa-thumbs-o-up"></i><span class="status">{$release_detail.praise}</span> </a>
+                        </li>
+                        <li>
+                            <a href="{:url('home/master/attitude')}?status=1&release_id={$release_detail['id']}" title="拍砖人数" class="addattitude {$is_status[0]?'showbg':''}" data-msg="踩了一下"><i class="fa fa-thumbs-o-down"></i><span class="status">{$release_detail.trample}</span> </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jj">
+                {$release_detail.abstract}
+                <div class="date">
+                    {volist name="release_detail.category" id="cat" key="k"}
+                    {$cat}&nbsp;<span class="fg">|</span>
+                    {/volist}
+
+                    {$release_detail.addtime|date='Y-m-d H:i:s',###}
+                </div>
+            </div>
+
+
+        </div>
+        <!--<div class="price clearfix">
+            <ul>
+                <li>该样板材质球售价：2.00元
+                    <a href="javascript:;">购买材质球</a>
+                </li>
+                <li>该样板实物售价：10.00元
+                    <a href="javascript:;">购买样板</a>
+                </li>
+            </ul>
+
+        </div>-->
+        <div class="view">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs redline">
+                    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 详情</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">样板</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="false">适用工艺</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-4" aria-expanded="false">适用设备</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-5" aria-expanded="false">案例</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-6" aria-expanded="false">文章</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-7" aria-expanded="false">问答</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-8" aria-expanded="false">供应商</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="canshu">
+                            <div class="bt fontsize">简介：</div>
+                            <div class="csview ">{$release_detail.content}</div>
+                        </div>
+
+                        <div class="canshu  ">
+                            <div class="effect clearfix ">
+                                <div class="bt fontsize l">效果：</div>
+                                {volist name="release_detail.effect" id="eff"}
+                                <a href="javascript:;" class="cslj">{$eff}</a>
+                                {/volist}
+                            </div>
+                        </div>
+                        <div class="canshu">
+                            <div class="bt fontsize">价格核算：</div>
+                            <div class="csview ">{$release_detail.price_accounting}</div>
+                        </div>
+                        <div class="canshu">
+                            <div class="bt fontsize">参考文献：</div>
+                            <div class="csview clearfix rel ">
+                                <ul>
+                                    {if condition="isset($release_detail.reference.0)"}
+                                    {volist name="release_detail.reference.0" id="ref1" key="k1"}
+                                    <li>[{$i++}] {$ref1}</li>
+                                    {/volist}
+                                    {/if}
+                                </ul>
+                                <div class="shensuojt show anniu"> </div>
+                                <div class="bangzhu2c"  >
+                                    <ul>
+                                        {if condition="isset($release_detail.reference.1)"}
+                                        {volist name="release_detail.reference.1" id="ref2" key="k2"}
+                                        <li>[{$i++}] {$ref2}</li>
+                                        {/volist}
+                                        {/if}
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="canshu contentparent">
+                            <div class="bt fontsize">错误/歧义反馈：</div>
+                            <div class="form-group">
+                                <input type="hidden" value="{:url('home/master/comment')}?release_id={$release_detail['id']}&type=1" id="curl">
+                                <input class="form-control bgf0  content" type="text" placeholder="提出文章中，有表述错误、歧义的地方！一旦采购，我们将给与适当的奖励。">
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="l"><i class="fa fa-smile-o fs28"></i></div>
+                                <div class="r">
+                                    <button class="btn  btn-regiest w100  content_submit" type="submit" data-level="0">提交</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="canshu">
+                            <div class="bt fontsize">免责声明：</div>
+                            <div class="csview ">
+
+                                CMFYB尊重知识产权，本文作者引用部分资料仅为交流学习之用，所引用资料都标注了原文出处，个人或单位如认为本文存在侵权之内容，请及时与我们联系，我们会及时处理。<br>
+
+                                CMFYB力求文章严谨准确，并邀请专家审核，但因时间和人力有限，文中表述难免有所纰漏，我们对文中数据、观点不做任何保证，请读者仅作参考，并请自行承担全部责任。我们也热烈欢迎各界人士批评指正。
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                       <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="样板详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt"><div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="样板详情页.html">蚀纹</a>
+                                                <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-pane">
+                        <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="yb-tab gy clearfix">
+                            <ul>
+                                <li><a href="javascript:;">表面工艺</a></li>
+                                <li><a href="javascript:;">成型工艺</a></li>
+                                <li><a href="javascript:;">连接工艺</a></li>
+                            </ul>
+                        </div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li> <div class="itembg">
+                                    <a href="工艺详情页.html" class="db"><img src="__CDN__/assets/home/images/u1078.png" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <div class="frjc12 l qw">权威</div>
+                                                <div class="l g9jc">CMFYB</div>
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">POM（赛钢）</div>
+                                        </div>
+                                        <div class="clearfix fenlei ">
+                                    <div class="l bc-cz">
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">耐高温</a>
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">抗紫外线</a>
+
+                                    </div>
+                                    <div class="r frjc12"></div>
+                                </div>
+                                <div class="gybq">
+                                    <span>材料</span>
+                                </div>
+                                        <div class="cl">
+                                            <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                            
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="工艺详情页.html" class="db"><img src="__CDN__/assets/home/images/u1723.png" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <div class="frjc12 l qw">权威</div>
+                                                <div class="l g9jc">CMFYB</div>
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">电镀</div>
+                                        </div>
+                                        <div class="clearfix fenlei ">
+                                    <div class="l bc-cz">
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">塑料</a>
+                                        
+                                    </div>
+                                    <div class="r frjc12"></div>
+                                </div>
+                                <div class="gybq">
+                                    <span>表面工艺</span>
+                                </div>
+                                        <div class="cl">
+                                            <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                          
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-4" class="tab-pane">
+                        <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li> <div class="itembg">
+                                    <a href="工艺详情页.html" class="db"><img src="__CDN__/assets/home/images/u1078.png" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <div class="frjc12 l qw">权威</div>
+                                                <div class="l g9jc">CMFYB</div>
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">POM（赛钢）</div>
+                                        </div>
+                                        <div class="clearfix fenlei ">
+                                    <div class="l bc-cz">
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">耐高温</a>
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">抗紫外线</a>
+
+                                    </div>
+                                    <div class="r frjc12"></div>
+                                </div>
+                                <div class="gybq">
+                                    <span>材料</span>
+                                </div>
+                                        <div class="cl">
+                                            <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                            
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="工艺详情页.html" class="db"><img src="__CDN__/assets/home/images/u1723.png" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <div class="frjc12 l qw">权威</div>
+                                                <div class="l g9jc">CMFYB</div>
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">电镀</div>
+                                        </div>
+                                        <div class="clearfix fenlei ">
+                                    <div class="l bc-cz">
+                                        <a href="javascript:;" data_c="full" data_url="工艺详情页.html">塑料</a>
+                                        
+                                    </div>
+                                    <div class="r frjc12"></div>
+                                </div>
+                                <div class="gybq">
+                                    <span>表面工艺</span>
+                                </div>
+                                        <div class="cl">
+                                            <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                          
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-5" class="tab-pane">
+                        <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li><div class="itembg">
+                                    <a href="案例详情页.html" class="db"><img src="__CDN__/assets/home/images/u1236.png" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <!--<div class="frjc12 l qw">权威</div>-->
+                                                <div class="l g9jc">CMFYB</div>
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">冷轧钢板</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">案例</span>
+                                                <a href="案例详情页.html">折弯</a>
+                                                <a href="案例详情页.html">焊接</a>
+
+                                            </div>
+                                            <div class="r frjc12"></div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+
+                                    <a href="案例详情页.html" class="db video">
+                                        <div class="bf"><i class="iconfont icon-play "></i></div>
+                                        <img src="__CDN__/assets/home/images/u906.png" class="tjimg">
+                                    </a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r ">
+                                                <!--<div class="frjc12 l qw">权威</div>-->
+                                                <!--<div class="l g9jc">CMFYB</div>-->
+                                                <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                                <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                                <div class="clearfix box-name"></div>
+                                            </div>
+                                            <div class="bc-bt-n">加湿器</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">案例</span>
+                                                <a href="案例详情页.html">折弯</a>
+                                                <a href="案例详情页.html">焊接</a>
+
+                                            </div>
+                                            <div class="r frjc12"></div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                        </a>
+                                                
+                                                <div class="dropdown-menu my-box ">
+                                                    <div class="my-box-t">我的盒子</div>
+                                                    <div class="my-box-list">
+                                                        <ul>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                            </li>
+                                                            <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                            </li>
+                                                            <li>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                        </button> </span>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                                </a>
+                                                <a href="javascript:;">
+                                                    <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                    </div>
+                                                </a>
+                                                <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                            </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-6" class="tab-pane">
+                        <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li><div class="itembg story">
+                                    <a href="探索文章详情页.html" class="db">
+                                        <div class="img-jq">
+                                            <div class="xiahuax">
+                                                <h3>PC/ABS合金的性质及其运用指南分析</h3>
+                                                <p>塑料ABS树脂是产量最大，应用最广泛的一种三元共聚物。兼具韧，硬，刚相均衡的优良力学性能。这是一种上世纪40年代发展起来的通用热塑性工程塑料，是一个综合力学性能十分优秀的塑料品种，具有良好的刚性、硬度和加工流动性，而且具有高韧性特</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="bc-nr">
+                                   
+                                        <div class="clearfix fenlei ">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">文章</span> <a href="样板详情页.html">蚀纹</a> <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                                <div class="r frjc12 qw">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+
+                                            <div class="dropdown-menu my-box ">
+                                                <div class="my-box-t">我的盒子</div>
+                                                <div class="my-box-list">
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                        <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                        </button> </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+                                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                        </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a href="企业信息.html">CMYB采编中心</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-7" class="tab-pane">
+                        <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li><div class="itembg story">
+                                    <a href="探索问答详情页.html" class="db">
+                                        <div class="img-jq">
+                                            <div class="xiahuax">
+                                                <h3>PC/ABS合金的性质及其运用指南分析</h3>
+                                                <p>塑料ABS树脂是产量最大，应用最广泛的一种三元共聚物。兼具韧，硬，刚相均衡的优良力学性能。这是一种上世纪40年代发展起来的通用热塑性工程塑料，是一个综合力学性能十分优秀的塑料品种，具有良好的刚性、硬度和加工流动性，而且具有高韧性特</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix fenlei ">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">文章</span> <a href="样板详情页.html">蚀纹</a> <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                                <div class="r frjc12 qw">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+
+                                            <div class="dropdown-menu my-box ">
+                                                <div class="my-box-t">我的盒子</div>
+                                                <div class="my-box-list">
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                        <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                        </button> </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+                                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                        </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a href="企业信息.html">CMYB采编中心</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li><div class="itembg story">
+                                    <a href="探索问答详情页.html" class="db">
+                                        <div class="img-jq">
+                                            <div class="xiahuax">
+                                                <h3>PC/ABS合金的性质及其运用指南分析</h3>
+                                                <p>塑料ABS树脂是产量最大，应用最广泛的一种三元共聚物。兼具韧，硬，刚相均衡的优良力学性能。这是一种上世纪40年代发展起来的通用热塑性工程塑料，是一个综合力学性能十分优秀的塑料品种，具有良好的刚性、硬度和加工流动性，而且具有高韧性特</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix fenlei ">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">文章</span> <a href="样板详情页.html">蚀纹</a> <a href="样板详情页.html">ABC</a>
+                                            </div>
+                                                <div class="r frjc12 qw">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+
+                                            <div class="dropdown-menu my-box ">
+                                                <div class="my-box-t">我的盒子</div>
+                                                <div class="my-box-list">
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                        <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                        </button> </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+                                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                        </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a href="企业信息.html">CMYB采编中心</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="tab-8" class="tab-pane">
+                        <div class="yb-tab gy clearfix rel">
+                            <ul>
+                                <li><a href="javascript:;">全部供应商</a></li>
+                                <li><a href="javascript:;">所在地区</a></li>
+                            </ul>
+                            <div class="gys-num">共 5 家供应商</div>
+                        </div>
+                        <div class="supplier clearfix">
+                            <ul>
+                                <li>
+                                    <div class="tx">
+                                        <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg gys"></div>
+                                        <div class="mess"><a href="个人信息.html">设备制造</a><br>
+                                            <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                                        </div>
+                                        <div class="guanzhu-btn clearfix">
+                                            <ul>
+                                                <li><button class="btn  btn-gz " type="submit">已关注</button></li>
+                                                <li> <button class="btn  btn-qq " type="submit">QQ</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx">
+                                        <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg gys"></div>
+                                        <div class="mess"><a href="个人信息.html">设备制造</a><br>
+                                            <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                                        </div>
+                                        <div class="guanzhu-btn clearfix">
+                                            <ul>
+                                                <li><button class="btn  btn-gz " type="submit">已关注</button></li>
+                                                <li> <button class="btn  btn-qq " type="submit">QQ</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx">
+                                        <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg gys"></div>
+                                        <div class="mess"><a href="个人信息.html">设备制造</a><br>
+                                            <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                                        </div>
+                                        <div class="guanzhu-btn clearfix">
+                                            <ul>
+                                                <li><button class="btn  btn-gz " type="submit">已关注</button></li>
+                                                <li> <button class="btn  btn-qq " type="submit">QQ</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx">
+                                        <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg gys"></div>
+                                        <div class="mess"><a href="个人信息.html">设备制造</a><br>
+                                            <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                                        </div>
+                                        <div class="guanzhu-btn clearfix">
+                                            <ul>
+                                                <li><button class="btn  btn-gz " type="submit">已关注</button></li>
+                                                <li> <button class="btn  btn-qq " type="submit">QQ</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx">
+                                        <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg gys"></div>
+                                        <div class="mess"><a href="个人信息.html">设备制造</a><br>
+                                            <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                                        </div>
+                                        <div class="guanzhu-btn clearfix">
+                                            <ul>
+                                                <li><button class="btn  btn-gz " type="submit">已关注</button></li>
+                                                <li> <button class="btn  btn-qq " type="submit">QQ</button></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side">
+      <div class="kepu clearfix">
+          <h3 class="fs24">CMF科普</h3>
+          <p>致力于权威的科学传播</p>
+         <!-- <a href="javascript:;" class="jrzjt r">加入专家团</a>-->
+      </div>
+        <div class="renzzj bge4">
+            <div class="bt">本词条权威认证专家：</div>
+            <div class="rzzhuanjia">
+                <ul>
+                    <li>
+                        <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg fs50"></div>
+                        <div class="pl">
+                            <div class="inform"><a href="javascript:;">王二虎&nbsp;&nbsp;工程师</a><br>
+                                <a href="javascript:;">杭州迷彩材料科技有限公司</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg fs50"></div>
+                        <div class="pl">
+                            <div class="inform"><a href="javascript:;">王二虎&nbsp;&nbsp;工程师</a><br>
+                                <a href="javascript:;">杭州迷彩材料科技有限公司</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+           <a href="c词条认证.html" class="renzjlj">我来对本此条进行认证</a>
+
+            <div class="clearfix box-name"></div>
+        </div>
+        <div class="tadefb tj">
+            <div class="bt">统计：</div>
+            编辑次数：5次历史版本<br>
+            最近更新：2018.06.15<br>
+            创建者：{$release_detail.user.username}
+        </div>
+        <div class="tadefb tj thank">
+            <div class="bt">鸣谢：</div>
+            <div class="thank-ren">
+                <ul>
+                    <li><span>王天晓 </span> 杭州万鑫涂装有限公司</li>
+                    <li><span>吴天昊 </span> 浙江工商大学</li>
+                    <li><span>王天晓 </span> 杭州万鑫涂装有限公司</li>
+                </ul>
+            </div>
+            <div class="shensuojt show anniu"> </div>
+            <div class="bangzhu2c">
+                <div class="thank-ren">
+                    <ul>
+                        <li><span>王天晓 </span> 杭州万鑫涂装有限公司</li>
+                        <li><span>吴天昊 </span> 浙江工商大学</li>
+                        <li><span>王天晓 </span> 杭州万鑫涂装有限公司</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="tadefb">
+            类似推荐：
+        </div>
+        <div class="case clearfix">
+            <ul>
+                {volist name="more_lsit" id="more"}
+                <li>
+                    <div class="itembg boxparent">
+                        <a href="{:url('home/master/material_detail')}?id={$more.id}&release_type={$release_type}" class="db"><img src="{$more['cover_image']==''?'__CDN__/assets/home/images/yb5.jpg':$more['cover_image']}" class="tjimg"></a>
+                        <div class="bc-nr">
+                            <div class="clearfix bc-bt">
+                                <div class="r ">
+                                    <div class="frjc12 l qw">权威</div>
+                                    <div class="l g9jc">CMFYB</div>
+                                    <!--<i class="fa fa-soccer-ball-o red l" title="有材质球"></i>-->
+                                    <!--<i class="icon icon-logo icon-hlogo l"></i>-->
+                                    <div class="clearfix box-name"></div>
+                                </div>
+                                <div class="bc-bt-n">{$more.name}</div>
+                            </div>
+                            <div class="clearfix fenlei ">
+                                    <div class="l bc-cz">
+                                        {volist name="more.effect" id="eff"}
+                                        <a href="javascript:;" data_c="full">{$eff}</a>
+                                        {/volist}
+
+                                    </div>
+                                    <div class="r frjc12"></div>
+                                </div>
+                                <div class="gybq">
+                                    {volist name="more.category" id="cat"}
+                                    <span>{$cat}</span>
+                                    {/volist}
+                                </div>
+                            <div class="cl">
+                                <div class="yb-icons box-icon">
+                                    <div class="box-icongap">
+                                        <i class="icon icon-eye"></i><span class="boxfs">{$more.browse}</span>
+                                    </div>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                        <div class="box-icongap">
+                                            <i class="icon icon-cube icon-cube3 {$more['is_status4']>0?'icon-cube4':''}"></i><span class="boxfs boxstatus">{$more.addbox}</span>
+                                        </div>
+                                    </a>
+
+                                    <div class="dropdown-menu my-box ">
+                                        <div class="my-box-t">我的盒子</div>
+                                        <div class="my-box-list">
+                                            <ul>
+                                                {volist name="more.more_box" id="mb"}
+                                                <li><a href="{:url('home/master/attitude')}?status=4&release_id={$more['id']}&sid={$mb.id}" class="addattitude2"><i class="fa fa-cube red {$mb['count2']==0?'nosel':'sel'}"></i>{$mb.name}</a>
+                                                </li>
+                                                {/volist}
+
+                                                <li class="tops"></li>
+                                                <li>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control fs12 boxval" placeholder="输入名称">
+                                                <span
+                                                        class="input-group-btn"> <button type="button"
+                                                                                         class="btn btn-danger addbox" data-link="{:url('home/master/attitude')}?status=4&release_id={$more['id']}">新建
+                                                </button> </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <a href="{:url('home/master/attitude')}?status=3&release_id={$more['id']}" title="收藏人数" class="addattitude3 {$more['is_status2']?'showbg2':''}" data-msg="收藏">
+                                        <div class="box-icongap"><i class="icon icon-star {$more['is_status3']?'icon-star2':''}"></i><span class="boxfs status">{$more.collection}</span></div>
+                                    </a>
+                                    <a href="{:url('home/master/attitude')}?status=2&release_id={$more['id']}" class="addattitude3 {$more['is_status2']?'showbg2':''}" data-msg="赞了一下">
+                                        <div class="box-icongap"><i class="icon icon-thumbs-up {$more['is_status2']?'icon-thumbs-up2':''}"></i><span class="boxfs status">{$more.praise}</span>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {/volist}
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="__CDN__/assets/home/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="__CDN__/assets/home/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/layer/layer.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="__CDN__/assets/home/bootstrap/js/contabs.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="__CDN__/assets/home/js/jquery.row-grid.js"></script>
+<script>
+    //错误/歧义反馈
+    $(".content_submit").click(function(){
+        var pid=$(this).attr('data-pid');
+        var level=$(this).attr('data-level');
+        var content=$(this).parents(".contentparent").find(".content").val();
+        var url=$("#curl").val();
+        var reply_id = 0;
+        if(level>0){
+            reply_id=$(this).attr('data-reply');
+        }
+
+        $.post(url,{content:content,level:level,reply_id:reply_id,pid:pid},function(result){
+            eval('data='+result+'');
+            if(data.code==1){
+                layer.msg(data.msg);
+                setTimeout(function(){window.location.reload(0);}, 1000);
+            }else{
+                layer.msg(data.msg);
+            }
+        })
+    })
+//他发布的赞...
+$(".addattitude3").click(function(){
+    var msg = $(this).attr('data-msg');
+    var span=$(this).find("span.status");
+    var url=this.href;
+    var t=$(this);
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg(msg+'成功');
+            span.html(span.html()*1+1);
+            t.addClass("showbg2");
+        }else if(result==2){
+            layer.msg(msg+'失败');
+        }else if(result==3){
+            layer.msg('取消'+msg+'成功');
+            span.html(span.html()*1-1);
+            t.removeClass("showbg2");
+        }else if(result==4){
+            layer.msg('取消'+msg+'失败');
+        }
+    })
+    return false;
+})
+
+
+//新建盒子
+$(".addbox").click(function(){
+    var boxs=$(this).parent().siblings(".boxval");
+    var name=boxs.val();
+    var link=$(this).attr('data-link');
+    if(name==''){
+        layer.msg('请输入盒子名称');
+        return false;
+    }
+    var url="{:url('home/release/cmfbox')}";
+    $.post(url,{name:name},function(data){
+        eval('data='+data+'');
+        if(data.code==1){
+          layer.msg(data.msg);
+          var html='<li><a href="'+link+'&sid='+data.id+'" class="addattitude2"><i class="fa fa-cube red nosel"></i>'+name+'</a></li>';alert
+          $(".tops").before(html);
+          boxs.val("");
+          $(".boxopen").addClass("open");
+          //setTimeout(function(){window.location.reload(0);}, 1000);
+        }else{
+          layer.msg(data.msg);
+        }
+    })
+    return false;
+})
+//加入盒子
+$("body").on("click",".addattitude2",function(){
+    var span=$(this).parents(".boxparent").find("span.boxstatus");
+    var icon=$(this).parents(".boxparent").find("i.icon-cube3");
+    var url=this.href;
+    var sel=$(this).find("i");
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg('已加入盒子');
+            span.html(span.html()*1+1);
+            $(".boxopen").removeClass("open");
+            sel.removeClass("nosel");
+            sel.addClass("sel");
+            if(span.html()*1>0){
+                icon.addClass("icon-cube4");
+            }else{
+                icon.removeClass("icon-cube4");
+            }
+        }else if(result==2){
+            layer.msg('加入盒子失败');
+        }else if(result==3){
+            layer.msg('已从盒子里删除');
+            span.html(span.html()*1-1);
+            $(".boxopen").removeClass("open");
+            sel.removeClass("sel");
+            sel.addClass("nosel");
+            if(span.html()*1>0){
+                icon.addClass("icon-cube4");
+            }else{
+                icon.removeClass("icon-cube4");
+            }
+        }else if(result==4){
+            layer.msg('已从盒子里删除失败');
+        }
+    });
+    return false;
+})
+//踩,赞...
+$(".addattitude").click(function(){
+    var msg = $(this).attr('data-msg');
+    var span=$(this).find("span.status");
+    var url=this.href;
+    var t=$(this);
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg(msg+'成功');
+            span.html(span.html()*1+1);
+            t.addClass("showbg");
+        }else if(result==2){
+            layer.msg(msg+'失败');
+        }else if(result==3){
+            layer.msg('取消'+msg+'成功');
+            span.html(span.html()*1-1);
+            t.removeClass("showbg");
+        }else if(result==4){
+            layer.msg('取消'+msg+'失败');
+        }
+    })
+    return false;
+})
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+    });
+    $('.about-eye').click(function () {
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash')
+    });
+    $('.toggle').on('click', function () {
+        var cur = $(this).text();
+        if (cur) {
+            $(this).text(cur === '图文并茂' ? '只看图片' : '图文并茂');
+        }
+    });
+    $(document).ready(function () {
+        $(".pinglun-tb").click(function () {
+            var shangji = $(this).parents('body');
+            if (shangji.find(".shows").length > 0) {
+                shangji.find('.pinglun-zk').removeClass('shows');
+                shangji.find('.pinglun-zk').show();
+            } else {
+                shangji.removeClass('display');
+                shangji.find('.pinglun-zk').addClass('shows');
+                shangji.find('.pinglun-zk').hide();
+            }
+
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".anniu").click(function(){
+            if($(this).parent().find(".show").length>0){
+                $(this).removeClass('show');
+                $(this).addClass('hide1');
+                $(this).parent().find('.bangzhu2c').fadeIn();
+            }else{
+                $(this).removeClass('hide1');
+                $(this).addClass('show');
+                $(this).parent().find('.bangzhu2c').fadeOut();
+            }
+
+
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+
+    $('[data_c="ShowInfo"]').hover(function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).show();
+    }, function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).hide();
+    });
+</script>
+
+<script src="__CDN__/assets/home/js/TouchSlide.js"></script>
+<script>
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        autoPlay: true, // 自动播放
+        autoPage: true, // 自动分页
+        delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+        interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+        switchLoad: "_src" // 切换加载，真实图片路径为"_src"
+    });
+
+</script>
+
+
+</body>
+</html> 

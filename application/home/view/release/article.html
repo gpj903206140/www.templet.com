@@ -1,0 +1,490 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/tmplate')}"> 发布样板</a></li>
+                <li class=""><a href="{:url('home/release/material')}">发布材料</a></li>
+                <li class=""><a href="{:url('home/release/technology')}">发布工艺</a></li>
+                <li class=""><a href="{:url('home/release/device')}">发布设备</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cases')}">发布案例</a></li>
+                <li class=""><a href="{:url('home/release/video')}">发布视频</a></li>
+                <li class="active"><a href="{:url('home/release/article')}">发布文章</a></li>
+                <li class=""><a href="{:url('home/release/interlocution')}">发布问答</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cmfbox')}">CMF盒子</a></li>
+            </ul>
+        </div>
+        <div class="fabu-content r">
+            <form class="form-horizontal" id="submit_form" method="post" action="{:url('home/release/article')}" target="exec_target" enctype="multipart/form-data">
+                <div class="fabubgwh mb10 minh740">
+                    <div>
+                        <div class="fabu-num1 clearfix">
+                            <div class="l per55">
+                                <div class="form-group clearfix">
+                                    <label class="l control-label rel">
+                                        <span class="red">*</span>
+                                        <input type="hidden" name="id" value="{$release_info.id}">
+                                        <span class="clname">文章标题：</span>
+                                    </label>
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput w200" name="name" value="{$release_info.name}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix l">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">封面图片：</span>
+                                </label>
+                                <div class="l m10" style="margin-top: 5px;">
+                                    <a href="#">
+                                         <label for="up_imga" class="upload"><img src="{$release_info.cover_image==''?'__CDN__/assets/home/images/mrt.png':$release_info.cover_image}" class="fmtp" id="imgShowa" style="width:40px;height:31px;"></label>
+                                        <input type="file" id="up_imga" style="display:none;"  name='file'>
+                                    </a>
+                                </div>
+                                <div class="l fs12 ccyq">
+                                    尺寸要求：257*145<br>
+                                    其他尺寸会被系统压缩，影响视觉效果！
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb15">
+                    <div class="form-group mb10">
+                        <label class="l control-label rel pt0">
+                            <span class="red">*</span>
+                            <span class="clname">简介：</span>
+                        </label>
+                    </div>
+                    <div class="form-group ">
+                        <div class="m10">
+                            <textarea type="text" placeholder="" class="form-control fbinput xg-height1" name="abstract">{$release_info.abstract}</textarea>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mb10  clearfix">
+                        <div class="mb15">
+                            <span class="wh">*</span>
+                            请选择文章相关属性<span class="g9 fs14">（便于用户检索。）</span>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel  l pt4">
+                                <span class="wh">*</span>
+                                材&#12288;&#12288;料：
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择材料</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['material']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.material" id="mat"}
+                                          <li class="lis{$mat.id}" title="{$mat.name}">
+                                             {$mat.name}
+                                             <input type="hidden" value="{$mat.id}" name="material[{$mat.id}][id]">
+                                             <input type="hidden" value="{$mat.name}" name="material[{$mat.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="2">
+
+                                        <div class="fdj fdjsearch" data-type="2"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”材料，</span>
+                                        <a data_c="fun" class="g0"><b>创建材料</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='material'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel  l pt4">
+                                <span class="wh">*</span>
+                                <span>表面工艺：</span>
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择表面工艺</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['surface_process']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.surface_process" id="sur"}
+                                          <li class="lis{$sur.id}" title="{$sur.name}">
+                                             {$sur.name}
+                                             <input type="hidden" value="{$sur.id}" name="surface_process[{$sur.id}][id]">
+                                             <input type="hidden" value="{$sur.name}" name="surface_process[{$sur.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”表面工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建表面工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='surface_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel l pt4">
+                                <span class="wh">*</span>
+                                <span>成型工艺：</span>
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择成型工艺</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['moulding_process']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.moulding_process" id="mou"}
+                                          <li class="lis{$mou.id}" title="{$mou.name}">
+                                             {$mou.name}
+                                             <input type="hidden" value="{$mou.id}" name="moulding_process[{$mou.id}][id]">
+                                             <input type="hidden" value="{$mou.name}" name="moulding_process[{$mou.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”成型工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建成型工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='moulding_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel  l pt4">
+                                <span class="wh">*</span>
+                                连接工艺：
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择连接工艺</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['join_process']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.join_process" id="joi"}
+                                          <li class="lis{$joi.id}" title="{$joi.name}">
+                                             {$joi.name}
+                                             <input type="hidden" value="{$joi.id}" name="join_process[{$joi.id}][id]">
+                                             <input type="hidden" value="{$joi.name}" name="join_process[{$joi.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”连接工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建连接工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='join_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl" style="margin-bottom: 0">
+                            <label class=" control-label rel  l pt4">
+                                <span class="wh">*</span>
+                                设&#12288;&#12288;备：
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择设备</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['device']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.device" id="dev"}
+                                          <li class="lis{$dev.id}" title="{$dev.name}">
+                                             {$dev.name}
+                                             <input type="hidden" value="{$dev.id}" name="device[{$dev.id}][id]">
+                                             <input type="hidden" value="{$dev.name}" name="device[{$dev.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="4">
+
+                                        <div class="fdj fdjsearch" data-type="4"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”设备，</span>
+                                        <a data_c="fun" class="g0"><b>创建设备</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='device'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl" style="margin-bottom: 0">
+                            <label class=" control-label rel  l pt4">
+                                <span class="wh">*</span>
+                                其&#12288;&#12288;他：
+                            </label>
+                            <div class="rel l">
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择其&#12288;&#12288;他</a>
+                                    <div class="checkedcon checkedcon2 checkedcon3" style="{$release_info['consumables']!=''?'display:block;':'';}">
+                                       <ul>
+                                          {volist name="release_info.consumables" id="con"}
+                                          <li class="lis{$con.name}" title="{$con.id}">
+                                             {$con.name}
+                                             <input type="hidden" value="{$con.id}" name="consumables[{$con.id}][id]">
+                                             <input type="hidden" value="{$con.name}" name="consumables[{$con.id}][name]">
+                                             <span class="lispan"></span>
+                                          </li>
+                                          {/volist}
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="0">
+
+                                        <div class="fdj fdjsearch" data-type="0"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”其&#12288;&#12288;他，</span>
+                                        <a data_c="fun" class="g0"><b>创建其&#12288;&#12288;他</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='consumables'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="form-group mb10">
+                            <label class="l control-label rel">
+                                <span class="wh">*</span>
+                                <span class="clname">详情：</span>
+                            </label>
+                        </div>
+                        <div class="form-group mb10">
+                            <div class="m10">
+                                <textarea id="editor_id" name="content" style="width:100%;height:350px;" placeholder="请输入要填写的内容">{$release_info.content}</textarea>
+                            </div>
+                        </div>
+                        <div class="fabu-num1 clearfix effect" style="margin-bottom: 10px;width:100%;">
+                            <div class="l per55" style="width:100%;">
+                                <div class="form-group clearfix">
+                                    <label class="l control-label rel pt0">
+                                        <span class="wh">*</span>
+                                        <span class="">标签：</span>
+                                    </label>
+
+                                    {if condition="$release_info.effect"}
+                                    {volist name="release_info.effect" id="eff"}
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="磨砂" name="effect[]" value="{$eff}">
+                                    </div>
+                                    {/volist}
+                                    {else/}
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="磨砂" name="effect[]" value="">
+                                    </div>
+                                    <div class="l  ">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="拉丝" name="effect[]">
+                                    </div>
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="防腐蚀" name="effect[]">
+                                    </div>
+                                    {/if}
+                                    <div class="l control-label pt0" id="addEffect"><a href="javascript:;" class="g9 fs14 ml5">添加</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group  ">
+                            <div class="m10">
+                            <div class="l ">
+                                <div>
+                                    <i class="icon icon-gt"></i>
+                                    <span class="g9 fs14">请认真填写发布信息，这对指导设计师设计工作的开展有重大的帮助！</span>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkbox" name="agree" type="checkbox"><span class="g9 fs14">我已阅读并接受</span>
+                                        <a href="用户协议.html" class="red">《用户协议》</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="r mt10">
+                                <input type="hidden" value="0" id="drafts" name="draft">
+                                <button class="btn  btn-regiest w80s mr5 button" type="button" data-draft="0">发布</button>
+                                <button class="btn  btn-regiest w80s button" type="button" data-draft="1">存草稿</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+//发布样板
+var flag=false;
+$(".button").click(function(){
+    var name = $("input[name='name']").val();
+    if(name==''){
+        layer.msg('问题标题不能为空');
+        return false;
+    }
+    var content = editor.html();
+    $("#editor_id").val(content);
+    if(content==''){
+        layer.msg('详情不能为空');
+        return false;
+    }
+    if(!$("input[name='agree']").is(":checked")){
+        layer.msg('请先阅读用户协议并勾选该项');
+        return false;
+    }
+    var draft=$(this).attr('data-draft');
+    $("#drafts").val(draft);
+    if(flag){
+        //return false;
+    }
+    flag=true;
+    var form=$("#submit_form");
+    var fd=new FormData(form.get(0));
+    var url=form.attr('action');
+    $.ajax({
+        url:url,
+        type:form.attr('method'),
+        processData:false,
+        contentType:false,
+        async:false,
+        data:fd,
+        beforeSend: function(){
+
+        },
+        success: function(data){
+          //console.log(data);
+          eval('data='+data+'');
+          if(data.code==1){
+             layer.msg(data.msg);
+             setTimeout(function(){window.location.reload(0);}, 1000);
+          }else{
+             layer.msg(data.msg);
+          }
+          
+        },
+        complete: function(){
+
+        }
+
+      })
+});
+</script>
+
+{include file="common/release" /}
+{include file="common/fooder" /}
+</body>
+</html> 

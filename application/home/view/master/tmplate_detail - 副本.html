@@ -1,0 +1,815 @@
+{include file="common/headPath" /}
+<body>
+<style>
+.cslj {
+    margin: 0 5px 5px 0;
+    float: left;
+}
+</style>
+<div class="ybxiangqing clearfix">
+    <div class="main">
+        <div class="jianjie">
+            <div class="bt-bar clearfix ">
+                <div class="bt">{$release_detail.name}</div>
+                <div class="jj-icons ">
+                    <ul>
+                        <li class="circle">
+                            <a href="javascript:;" data_c="ShowInfo" data_s="EWM1"><i class="fa fa-wechat"></i> </a>
+                            <div class=" upjt " id="EWM1">
+                                <div class="arrow "></div>
+                                <img src="__CDN__/assets/home/images/erwm.jpg"><br>分享到微信
+                            </div>
+                        </li>
+                        <li class="circle">
+                            <a href="javascript:;" title="复制链接"><i class="fa fa-link"></i> </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" title="添加到盒子里"><i class="fa fa-cube"></i>{$release_detail.addbox} </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" title="收藏人数"><i class="fa fa-star"></i>{$release_detail.collection} </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" title="点赞人数"><i class="fa fa-thumbs-o-up"></i>{$release_detail.praise} </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" title="拍砖人数"><i class="fa fa-thumbs-o-down"></i>{$release_detail.trample} </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jj">
+                {$release_detail.abstract}
+                <div class="date">
+                    <a href="javascript:;">样板</a>
+                    <span class="fg">|</span>
+                    {$release_detail.addtime|date='Y-m-d H:i:s',###}
+                    <span class="fg">|</span>
+                    <a href="javascript:;">举报</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="yangbankf clearfix">
+            <div class="yangbankf1 ybfgx">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4798.png"><br>
+                    <a href="#">材质球说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>材质球</h2>
+                    <div class="wlrmd">未列入开发名单中！</div>
+                    <div class="syrj">适用软件：Keyshot、VRay</div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" data_c="yqkf">要求开发</a></div>
+                        <div class="fs12">（2316人已要求）<br>
+                        <span class="g9">（要求开发的人越多，材质球开发速度越快！）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="yangbankf1 ">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4796.png"><br>
+                    <a href="#">样板说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>样板</h2>
+                    <div class="wlrmd">未列入开发名单中！</div>
+                    <div class="syrj g9 fs12">
+                        <i class="icon icon-dui"></i>包邮&nbsp;&nbsp;
+                        <i class="icon icon-dui"></i>CMFYB自营
+                    </div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" data_c="yqzz">要求制作</a></div>
+                        <div class="fs12">（2316人已要求）<br>
+                            <span class="g9">（要求开发的人越多，样板制作的速度越快！）</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+         </div>
+        <div class="yangbankf clearfix">
+            <div class="yangbankf1 ybfgx">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4798.png"><br>
+                    <a href="#">材质球说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>材质球
+                        <img src="__CDN__/assets/home/images/u237.png"><span>奋斗开发中！</span>
+                    </h2>
+                    <div class="wlrmd">价格：<span class="red"><b>¥2.00元</b></span></div>
+                    <div class="syrj">适用软件：Keyshot、VRay</div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" data_c="yyd">1元 预定</a></div>
+                        <div class="fs12">（2316人已预定）<br>
+                            <span class="g9">（预定的人越多，材质球开发速度越快！）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="yangbankf1 ">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4796.png"><br>
+                    <a href="#">样板说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>样板
+                        <img src="__CDN__/assets/home/images/u237.png"><span>奋斗开发中！</span>
+                    </h2>
+                    <div class="wlrmd">价格：<span class="red"><b>¥20.00元</b></span></div>
+                    <div class="syrj g9 fs12">
+                        <i class="icon icon-dui"></i>包邮&nbsp;&nbsp;
+                        <i class="icon icon-dui"></i>CMFYB自营
+                    </div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" data_c="yyd1">15元 预定</a></div>
+                        <div class="fs12">（2316人已预定）<br>
+                            <span class="g9">（预定的人越多，样板制作速度越快！）</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="yangbankf clearfix">
+            <div class="yangbankf1 ybfgx">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4798.png"><br>
+                    <a href="#">材质球说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>材质球</h2>
+                    <div class="wlrmd">
+                        <div class="r g9">销量：12</div>
+                        价格：<span class="red"><b>¥2.00元</b></span></div>
+                    <div class="syrj">适用软件：Keyshot、VRay</div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" >加入购物车</a></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="yangbankf1 ">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4796.png"><br>
+                    <a href="#">样板说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>
+                        <div class="syrj g9 fs12 byzy-ysj r">
+                            <i class="icon icon-dui"></i>包邮&nbsp;&nbsp;
+                            <i class="icon icon-dui"></i>CMFYB自营
+                        </div>
+                        样板</h2>
+                    <div class="wlrmd">
+                        <div class="r g9">销量：12</div>
+                        价格：<span class="red"><b>¥20.00元</b></span></div>
+                    <div class="syrj g9 fs12">
+                        <div class="tb-amount">
+                            <div class="tb-stock l ">
+                                <div class="l">数量：</div>
+                                <a href="javascript:;" class="addreduce l ">-</a>
+                                <a href="javascript:;" class="addreduce r ">+</a>
+                                <input type="text" value="1" class="tb-text">
+                            </div>
+                            <div class="l">（库存：213）</div>
+                        </div>
+                    </div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" >加入购物车</a></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="yangbankf clearfix">
+            <div class="yangbankf1 ybfgx">
+                <div class="cailiao-photo">
+                    <img src="__CDN__/assets/home/images/u4798.png"><br>
+                    <a href="#">材质球说明</a>
+                </div>
+                <div class="cailiao-jj">
+                    <h2>材质球</h2>
+                    <div class="wlrmd">
+                        <a href="c材质球使用教程.html" class="djred">《材质球使用教程》</a>
+                    </div>
+                    <div class="syrj">适用软件：Keyshot、VRay</div>
+                    <div >
+                        <div class="yqkfbtn l"> <a href="#" class="togglekf kaifa" >点击下载</a></div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="view">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs redline">
+                    <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true"> 详情</a>
+                    </li>
+                    <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="false">案例</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="canshu">
+                            <div class="bt fontsize">参数：</div>
+                            <div class="csview clearfix">
+                                <ul>
+                                    {foreach name="release_detail.parameter" item="value" key="k"}
+                                    <li>{$k}：{$value}</li>
+                                    {/foreach}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canshu ">
+                            <div class="csview cl clearfix">
+                                <ul>
+                                    <li>
+                                        <div class="bt fontsize">材料：</div>
+                                        {volist name="release_detail.material" id="rel"}
+                                        <a href="javascript:;" class="cslj">{$rel['name']}</a>
+                                        {/volist}
+                                    </li>
+                                    <li>
+                                        <div class="bt fontsize">耗材：</div>
+                                        {volist name="release_detail.consumables" id="con"}
+                                        <a href="javascript:;" class="cslj">{$con['name']}</a>
+                                        {/volist}
+                                    </li>
+                                    <li>
+                                        <div class="bt fontsize">成型工艺：</div>
+                                        {volist name="release_detail.moulding_process" id="mon"}
+                                        <a href="javascript:;" class="cslj">{$mon['name']}</a>
+                                        {/volist}
+                                    </li>
+                                    <li>
+                                        <div class="bt fontsize">表面工艺：</div>
+                                        {volist name="release_detail.surface_process" id="sur"}
+                                        <a href="javascript:;" class="cslj">{$sur['name']}</a>
+                                        {/volist}
+                                    </li>
+                                    <li>
+                                        <div class="bt fontsize">连接工艺：</div>
+                                        {volist name="release_detail.join_process" id="joi"}
+                                        <a href="javascript:;" class="cslj">{$joi['name']}</a>
+                                        {/volist}
+                                    </li>
+                                    <li>
+                                        <div class="bt fontsize">适用设备：</div>
+                                        {volist name="release_detail.device" id="dev"}
+                                        <a href="javascript:;" class="cslj">{$dev['name']}</a>
+                                        {/volist}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canshu  ">
+                            <div class="effect clearfix ">
+                                <div class="bt fontsize l">标签：</div>
+                                {volist name="release_detail.effect" id="eff"}
+                                <a href="javascript:;" class="cslj">{$eff}</a>
+                                {/volist}
+                            </div>
+                            <div class="nr">
+                                {$release_detail.content}
+                            </div>
+                        </div>
+                        <div class="comment-bank">
+                            <div class="comment clearfix">
+                                <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                                <div class="pl">
+                                    <div class="inform">王二虎&nbsp;&nbsp;工程师&nbsp;&nbsp;杭州迷彩材料科技有限公司</div>
+                                    <div class="form-group">
+                                        <input class="form-control bgf0 " type="text" placeholder="说点啥？">
+                                    </div>
+                                    <div class="form-group clearfix">
+                                        <div class="l"><i class="fa fa-smile-o fs28"></i></div>
+                                        <div class="r">
+                                            <button class="btn  btn-regiest w100 " type="submit">评论</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="commnet-list clearfix">
+                                <ul>
+                                    <li>
+                                        <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                                        <div class="pl">
+                                            <div class="inform">王二虎<span class="tab">工业设计师</span><i class="icon icon-boshi"></i><span class="t">T</span>工程师&nbsp;&nbsp;杭州迷彩材料科技有限公司<span class="tab">生产代工</span><span class="time">1小时前</span></div>
+                                            <div class="nr">
+                                                ABS 塑料是丙烯腈(A)、丁二烯(B)、苯乙烯(S)三种单体的三元共聚物，三种单体相对含量可任意变化，制成各种树脂。ABS 兼有三种组元的共同性能，A使其耐化学腐蚀、耐热，并有一定的表面硬度，B使其具有高弹性和韧性，S使其具有热塑性塑料的加工成型特性并改善电性能。因此ABS 塑料是一种原料易得、综合性能良好、价格便宜、用途广泛的“坚韧、质硬、刚性”材料。ABS塑料在机械、电气、纺织、汽车、飞机、轮船等制造工业及化工中获得了广泛的应用。
+                                            </div>
+                                            <div class="r jb">
+                                                <a href="javascript:;"><i class="fa fa-exclamation-triangle"></i>举报</a>
+                                                <a href="javascript:;" class="pinglun-tb " ><i class="fa fa-commenting-o" ></i></a>
+                                                <a href="javascript:;"><i class="fa fa-thumbs-o-up"></i>5.5万</a>
+                                            </div>
+                                            <div class="clearfix box-name"></div>
+                                            <div class="pinglun-zk shows " style="display: none">
+                                                <div class="form-group">
+                                                    <input class="form-control bgf0 " type="text" placeholder="说点啥？">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="l"><i class="fa fa-smile-o fs28"></i></div>
+                                                    <div class="r">
+                                                        <button class="btn  btn-regiest w100 " type="submit">评论</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </li>
+                                    <li>
+                                        <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                                        <div class="pl">
+                                            <div class="inform">王二虎<span class="tab">工业设计师</span><i class="icon icon-boshi"></i><span class="t">T</span>工程师&nbsp;&nbsp;杭州迷彩材料科技有限公司<span class="tab">生产代工</span><span class="time">1小时前</span></div>
+                                            <div class="nr">
+                                                ABS 塑料是丙烯腈(A)、丁二烯(B)、苯乙烯(S)三种单体的三元共聚物，三种单体相对含量可任意变化，制成各种树脂。ABS 兼有三种组元的共同性能，A使其耐化学腐蚀、耐热，并有一定的表面硬度，B使其具有高弹性和韧性，S使其具有热塑性塑料的加工成型特性并改善电性能。因此ABS 塑料是一种原料易得、综合性能良好、价格便宜、用途广泛的“坚韧、质硬、刚性”材料。ABS塑料在机械、电气、纺织、汽车、飞机、轮船等制造工业及化工中获得了广泛的应用。
+                                            </div>
+                                            <div class="r jb">
+                                                <a href="javascript:;"><i class="fa fa-exclamation-triangle"></i>举报</a>
+                                                <a href="javascript:;" class="pinglun-tb " ><i class="fa fa-commenting-o" ></i></a>
+                                                <a href="javascript:;"><i class="fa fa-thumbs-o-up"></i>5.5万</a>
+                                            </div>
+                                            <div class="clearfix box-name"></div>
+                                            <div class="pinglun-zk shows " style="display: none">
+                                                <div class="form-group">
+                                                    <input class="form-control bgf0 " type="text" placeholder="说点啥？">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="l"><i class="fa fa-smile-o fs28"></i></div>
+                                                    <div class="r">
+                                                        <button class="btn  btn-regiest w100 " type="submit">评论</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </li>
+                                    <li>
+                                        <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                                        <div class="pl">
+                                            <div class="inform">王二虎<span class="tab">工业设计师</span><i class="icon icon-boshi"></i><span class="t">T</span>工程师&nbsp;&nbsp;杭州迷彩材料科技有限公司<span class="tab">生产代工</span><span class="time">1小时前</span></div>
+                                            <div class="nr">
+                                                ABS 塑料是丙烯腈(A)、丁二烯(B)、苯乙烯(S)三种单体的三元共聚物，三种单体相对含量可任意变化，制成各种树脂。ABS 兼有三种组元的共同性能，A使其耐化学腐蚀、耐热，并有一定的表面硬度，B使其具有高弹性和韧性，S使其具有热塑性塑料的加工成型特性并改善电性能。因此ABS 塑料是一种原料易得、综合性能良好、价格便宜、用途广泛的“坚韧、质硬、刚性”材料。ABS塑料在机械、电气、纺织、汽车、飞机、轮船等制造工业及化工中获得了广泛的应用。
+                                            </div>
+                                            <div class="r jb">
+                                                <a href="javascript:;"><i class="fa fa-exclamation-triangle"></i>举报</a>
+                                                <a href="javascript:;" class="pinglun-tb " ><i class="fa fa-commenting-o" ></i></a>
+                                                <a href="javascript:;"><i class="fa fa-thumbs-o-up"></i>5.5万</a>
+                                            </div>
+                                            <div class="clearfix box-name"></div>
+                                            <div class="pinglun-zk shows " style="display: none">
+                                                <div class="form-group">
+                                                    <input class="form-control bgf0 " type="text" placeholder="说点啥？">
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="l"><i class="fa fa-smile-o fs28"></i></div>
+                                                    <div class="r">
+                                                        <button class="btn  btn-regiest w100 " type="submit">评论</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                       <div class="upload"><a href="javascript:;"><i class="icon icon-upload"></i></a></div>
+                        <div class="case clearfix">
+                            <ul>
+                                <li> <div class="itembg">
+                                    <a href="案例详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="案例详情页.html">蚀纹</a>
+                                                <a href="案例详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+
+                                            <div class="dropdown-menu my-box ">
+                                                <div class="my-box-t">我的盒子</div>
+                                                <div class="my-box-list">
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                                    </button> </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+                                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                        </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+                                <li> <div class="itembg">
+                                    <a href="案例详情页.html" class="db"><img src="__CDN__/assets/home/images/yb5.jpg" class="tjimg"></a>
+                                    <div class="bc-nr">
+                                        <div class="clearfix bc-bt">
+                                            <div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                                            <div class="bc-bt-n">CMFAN1802651111</div>
+                                        </div>
+                                        <div class="clearfix box-name">
+                                            <div class="l bc-cz">
+                                                <span class="yb-yj">样板</span>
+                                                <a href="案例详情页.html">蚀纹</a>
+                                                <a href="案例详情页.html">ABC</a>
+                                            </div>
+                                            <div class="r frjc12">精华</div>
+                                        </div>
+                                        <div class="yb-icons box-icon">
+                                            <div class="box-icongap">
+                                                <i class="icon icon-eye"></i><span class="boxfs">5.5万</span>
+                                            </div>
+                                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                                <div class="box-icongap">
+                                                    <i class="icon icon-cube"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+
+                                            <div class="dropdown-menu my-box ">
+                                                <div class="my-box-t">我的盒子</div>
+                                                <div class="my-box-list">
+                                                    <ul>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                                        </li>
+                                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                                        </li>
+                                                        <li>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                                    </button> </span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">5.5万</span></div>
+                                            </a>
+                                            <a href="javascript:;">
+                                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">5.5万</span>
+                                                </div>
+                                            </a>
+                                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">5.5万</span></div>
+
+                                        </div>
+                                        <div class="clearfix box-name">
+                            <div class="l"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                            <div class="yb-company"><a href="个人信息.html">王泽明</a>&nbsp;<a
+                                                    href="企业信息.html">杭州泽明科技有限公司</a></div>
+                                        </div>
+                                    </div>
+                                </div></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="side">
+        <div class="tx">
+           <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+            <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+            <button class="btn  btn-gz m10" type="submit">已关注</button>
+            <button class="btn  btn-qq m10" type="submit">QQ</button>
+        </div>
+        <div class="tadefb">
+            他的发布：
+        </div>
+        <div class="case clearfix">
+            <ul>
+                {volist name="more_lsit" id="more"}
+                <li> <div class="itembg">
+                    <a href="{:url('home/master/tmplate_detail')}?id={$more.id}" class="db"><img src="{$more['cover_image']==''?'__CDN__/assets/home/images/yb5.jpg':$more['cover_image']}" class="tjimg"></a>
+                    <div class="bc-nr">
+                        <div class="clearfix bc-bt">
+                           <div class="r">
+                                <a href="javascript:;" title="把材质球加入购物车" class="l">
+                                    <i class="icon icon-hua"></i>
+                                </a>
+                                <a href="javascript:;" class="l " title="正在开发中/缺货">
+                                    <i class="icon icon-logoh"></i>
+                                </a>
+                                <div class="clearfix box-name"></div>
+                            </div>
+                            <div class="bc-bt-n">{$more.name}</div>
+                        </div>
+                        <div class="clearfix box-name">
+                            <div class="l bc-cz">
+                                <span class="yb-yj">{$more.part_name}</span>
+                                <a href="案例详情页.html">蚀纹</a>
+                                <a href="案例详情页.html">ABC</a>
+                            </div>
+                            <div class="r frjc12">精华</div>
+                        </div>
+                        <div class="yb-icons box-icon">
+                            <div class="box-icongap">
+                                <i class="icon icon-eye"></i><span class="boxfs">{$more.browse}万</span>
+                            </div>
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" title="添加到盒子里">
+                                <div class="box-icongap">
+                                    <i class="icon icon-cube"></i><span class="boxfs">{$more.addbox}</span>
+                                </div>
+                            </a>
+
+                            <div class="dropdown-menu my-box ">
+                                <div class="my-box-t">我的盒子</div>
+                                <div class="my-box-list">
+                                    <ul>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red sel"></i>家用电器</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>我的盒子</a>
+                                        </li>
+                                        <li><a href="javascript:;"><i class="fa fa-cube red nosel"></i>家用电器</a>
+                                        </li>
+                                        <li>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control fs12" placeholder="输入名称">
+                                                                    <span class="input-group-btn"> <button type="button" class="btn btn-danger">新建
+                                                                    </button> </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <a href="javascript:;">
+                                <div class="box-icongap"><i class="icon icon-star"></i><span class="boxfs">{$more.collection}</span></div>
+                            </a>
+                            <a href="javascript:;">
+                                <div class="box-icongap"><i class="icon icon-thumbs-up"></i><span class="boxfs">{$more.praise}</span>
+                                </div>
+                            </a>
+                            <div class="box-icongap"><i class="icon icon-comment"></i><span class="boxfs">{$more.discuss}</span></div>
+
+                        </div>
+                        <div class="clearfix box-name">
+                            <div class="l"><img src="{$more['user']['avatar']==''?'__CDN__/assets/home/images/mrtx.png':$more['user']['avatar']}" class="tximg"></div>
+                            <div class="yb-company"><a href="{:url('home/user/user_info')}?user_id={$more.user_id}">{$more.user.username}</a>&nbsp;<a
+                                    href="{:url('home/business/business_info')}?business_id={$more.business_id}&user_id={$more.user_id}">{$more.business.name}</a></div>
+                        </div>
+                    </div>
+                </div>
+                </li>
+                {/volist}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="bootstrap/js/plugins/layer/layer.min.js"></script>
+<script src="bootstrap/js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="bootstrap/js/contabs.min.js"></script>
+<script src="bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="js/jquery.row-grid.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+    });
+    $(document).ready(function () {
+        $('[data_c=yqkf]').click(function () {
+            var cur = $(this).text();
+            var shangji = $(this).parents('.yqkfbtn ');
+            if (shangji.find(".kaifa").length > 0) {
+                shangji.find('.togglekf').removeClass('kaifa');
+                $(this).text(cur === '要求开发' ? '已经要求' : '要求开发');
+            } else {
+                shangji.removeClass('display');
+                shangji.find('.togglekf').addClass('kaifa');
+                $(this).text(cur === '已经要求' ? '要求开发' : '已经要求');
+            }
+        });
+        $('[data_c=yqzz]').click(function () {
+            var cur = $(this).text();
+            var shangji = $(this).parents('.yqkfbtn');
+            if (shangji.find(".kaifa").length > 0) {
+                shangji.find('.togglekf').removeClass('kaifa');
+                $(this).text(cur === '要求制作' ? '已经要求' : '要求制作');
+            } else {
+                shangji.removeClass('display');
+                shangji.find('.togglekf').addClass('kaifa');
+                $(this).text(cur === '已经要求' ? '要求制作' : '已经要求');
+            }
+        });
+        $('[data_c=yyd]').click(function () {
+            var cur = $(this).text();
+            var shangji = $(this).parents('.yqkfbtn');
+            if (shangji.find(".kaifa").length > 0) {
+                shangji.find('.togglekf').removeClass('kaifa');
+                $(this).text(cur === '1元 预定' ? '已预定' : '已预定');
+            }
+        });
+        $('[data_c=yyd1]').click(function () {
+            var cur = $(this).text();
+            var shangji = $(this).parents('.yqkfbtn');
+            if (shangji.find(".kaifa").length > 0) {
+                shangji.find('.togglekf').removeClass('kaifa');
+                $(this).text(cur === '15元 预定' ? '已预定' : '已预定');
+            }
+        });
+    });
+
+
+    $(document).ready(function () {
+        $(".pinglun-tb").click(function () {
+            var shangji = $(this).parents('body');
+            if (shangji.find(".shows").length > 0) {
+                shangji.find('.pinglun-zk').removeClass('shows');
+                shangji.find('.pinglun-zk').show();
+            } else {
+                shangji.removeClass('display');
+                shangji.find('.pinglun-zk').addClass('shows');
+                shangji.find('.pinglun-zk').hide();
+            }
+
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+
+    $('[data_c="ShowInfo"]').hover(function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).show();
+    }, function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).hide();
+    });
+</script>
+
+<script src="js/TouchSlide.js"></script>
+<script>
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        autoPlay: true, // 自动播放
+        autoPage: true, // 自动分页
+        delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+        interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+        switchLoad: "_src" // 切换加载，真实图片路径为"_src"
+    });
+
+</script>
+
+
+</body>
+</html> 

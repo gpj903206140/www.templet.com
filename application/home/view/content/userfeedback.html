@@ -1,0 +1,128 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            
+            <ul class="nav nav-tabs redline qyxx">
+                 <li class=""><a href="{:url('home/content/help')}"> 帮助中心</a></li>
+                <li class=""><a href="{:url('home/content/protocol')}">用户协议</a></li>
+                <li class="active"><a href="{:url('home/content/userfeedback')}">用户反馈</a></li>
+            </ul>
+
+        </div>
+        <div class="fabu-content r">
+            <div class="bgwh fabu-num minh740">
+                <div class="middle-title-wrap border-bottom">
+                    <h2 class="middle-title">提交问题/反馈</h2>
+                </div>
+                <div class="tjfankui">
+                <form class="form-horizontal " id="submit_form" method="post" action="{:url('home/content/userfeedback')}" target="exec_target">
+                    <div class="mb20">如果提交有关浏览速度、系统BUG、视觉显示问题，请注明您使用的操作系统、浏览器，以便我们尽快对应查找问题并解决。</div>
+                    <div class="mb20 clearfix">
+                        <div class="mb10 clearfix">
+                            <div class="l mr10">问题类型：</div>
+                            <div class="qylx">
+                                <div class="mb10">
+                                    <label class="fbclname "><input type="radio" name="issue_type" value="BUG提交"> BUG提交</label>
+                                    <label class="fbclname "><input type="radio" name="issue_type" value="账号问题"> 账号问题</label>
+                                    <label class="fbclname "><input type="radio" name="issue_type" value="功能建议"> 功能建议</label>
+                                    <label class="fbclname "><input type="radio" name="issue_type" value="单选按钮"> 单选按钮</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb10 clearfix">
+                            <div class="l  pt5">输入内容：</div>
+                            <div class="qylx"><textarea class="form-control clinput yhfk-textarea " type="text" name="content" id="content"></textarea></div>
+                        </div>
+                        <div class="mb10 lx-method clearfix">
+                            <div class="yhfk-lxfs">联系方式:</div>
+                            <div class="form-group clearfix ">
+                                <label class="l control-label rel">
+                                    <span class="clname">联系人：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="" name="contacts">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix ">
+                                <label class="l control-label rel">
+                                    <span class="clname">邮箱：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="clname">手机：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="" name="tel">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="zjxy">
+                        <a href="javascript:;" class="bigbtn m30" id="submits">提交完毕</a>
+                    </div>
+
+                </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script type="text/javascript">
+//提交问题
+$("#submits").click(function(){
+    var content=$("#content").val(); 
+    if(content==''){
+        layer.msg('请输入问题/反馈的内容');
+        return false;
+    }
+    var tel=$("input[name='tel']").val(); //手机号
+    if(tel!=''){
+        if(tel.search(/^1(3|4|5|7|8)\d{9}$/) == -1){
+            layer.msg('请输入正确的手机格式');
+            return false;
+        }
+    }
+    var form=$("#submit_form");
+    var fd=new FormData(form.get(0));
+    var url=form.attr('action');
+    $.ajax({
+        url:url,
+        type:form.attr('method'),
+        processData:false,
+        contentType:false,
+        async:false,
+        data:fd,
+        beforeSend: function(){
+
+        },
+        success: function(data){
+          //console.log(data);
+          eval('data='+data+'');
+          if(data.code==1){
+             layer.msg(data.msg);
+             setTimeout(function(){window.location.reload(0)}, 1000);
+          }else{
+             layer.msg(data.msg);
+          }
+          
+        },
+        complete: function(){
+
+        }
+
+      })
+});
+</script>
+{include file="common/fooder" /}
+</body>
+</html> 

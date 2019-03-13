@@ -1,0 +1,137 @@
+{include file="common/headPath" /}
+<body>
+
+<div class="tabs-container regist">
+    <div class="navbg">
+        <div class="zcbt">注册</div>
+        <div class="zctip">已有帐号，<a href="{:url('home/login/sign')}">马上登录</a></div>
+    </div>
+    <div class=" tab-content">
+        <form class="form-horizontal " novalidate="novalidate">
+            <div class="form-group">
+                <input name="name" minlength="2" class="form-control" required="" aria-required="true"
+                       type="text" placeholder="手机号" id="mobile">
+
+            </div>
+            <div class="form-group">
+                <div class="lvbar l">通过验证</div>
+                <div class="gxuan l"><img src="__CDN__/assets/home/images/gou.png"></div>
+            </div>
+            <div class="form-group">
+                <input class="form-control yzm l" name="email" required="" aria-required="true"
+                       type="password" placeholder="验证码" id="code">
+                <button type="button" class="btn btn-w-m btn-default r">发送验证码</button>
+
+            </div>
+            <div class="form-group rel">
+
+                <input id="cemail" class="form-control" name="email" required="" aria-required="true"
+                       type="password" placeholder="6-20位密码，字母/数字/符号至少两种">
+                <div class="zc-eye">
+                    <a class="about-eye">
+                        <i class="fa fa-eye big"></i>
+                    </a>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div>
+                    <button class="btn  btn-regiest col-sm-12" id="regiest">注&nbsp;&nbsp;册</button>
+                </div>
+            </div>
+            <div class="form-group">
+
+                    <div class="checkbox">
+                        <label>
+                            <input class="checkbox" name="agree" type="checkbox">我已阅读并接受<a href="javascript:;" class="red">《用户协议》</a>
+                        </label>
+                    </div>
+
+            </div>
+        </form>
+
+        <div class="disanf  clearfix zc">
+            <div class="l dsf">第三方账号登录</div>
+            <div class="disanftb clearfix r">
+                <ul>
+                    <li><a href="javascript:;"><i class=" fa fa-qq"></i></a></li>
+                    <li><a href="javascript:;"><i class=" fa fa-weibo"></i></a></li>
+                    <li><a href="javascript:;" data_c="ShowInfo" data_s="EWM1"><i class="fa fa-wechat"></i> </a>
+                        <div class=" upjt " id="EWM1">
+                            <div class="arrow "></div>
+                            <img src="images/erwm.jpg"><br>分享到微信
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="__CDN__/assets/home/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="__CDN__/assets/home/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/layer/layer.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="__CDN__/assets/home/bootstrap/js/contabs.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="__CDN__/assets/home/js/jquery.row-grid.js"></script>
+<script>
+$("#regiest").click(function(){alert("111");
+    var mobile=$("#mobile").val();
+    var code=$("#code").val();
+    var passwd=$("#cemail").val();
+    $.post(url,{mobile:mobile,passwd:passwd,code:code},function(reslut){
+        alert(reslut);
+    })
+    return false;
+})
+</script>
+<script type="text/javascript">
+    $('.about-eye').click(function () {
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash')
+    });
+    $('.video').mouseover(function () {
+        $(this).find(".bf").show();
+    });
+    $('.video').mouseleave(function () {
+        $(this).find(".bf").hide();
+    });
+    $(document).ready(function () {
+        $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    $('[data_c="ShowInfo"]').hover(function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).show();
+    }, function () {
+        var data_s = $(this).attr('data_s');
+        $('#' + data_s).hide();
+    });
+</script>
+<script src="js/TouchSlide.js"></script>
+<script>
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        autoPlay: true, // 自动播放
+        autoPage: true, // 自动分页
+        delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+        interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+        switchLoad: "_src" // 切换加载，真实图片路径为"_src"
+    });
+
+</script>
+
+
+</body>
+</html> 

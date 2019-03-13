@@ -1,0 +1,565 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l">
+            <ul class="nav nav-tabs redline qyxx">
+                <li class="active"><a href="{:url('home/release/tmplate')}"> 发布样板</a></li>
+                <li class=""><a href="{:url('home/release/material')}">发布材料</a></li>
+                <li class=""><a href="{:url('home/release/technology')}">发布工艺</a></li>
+                <li class=""><a href="{:url('home/release/device')}">发布设备</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cases')}">发布案例</a></li>
+                <li class=""><a href="{:url('home/release/video')}">发布视频</a></li>
+                <li class=""><a href="{:url('home/release/article')}">发布文章</a></li>
+                <li class=""><a href="{:url('home/release/interlocution')}">发布问答</a></li>
+            </ul>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="{:url('home/release/cmfbox')}">CMF盒子</a></li>
+            </ul>
+        </div>
+
+        <div class="fabu-content r">
+            <form class="form-horizontal" id="submit_form" method="post" action="{:url('home/release/tmplate')}" target="exec_target" enctype="multipart/form-data">
+                <div class="fabubgwh yj5-0 mb10">
+                    <div class="fabu-num1 clearfix">
+                        <div class="l per55">
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">样板编号：</span>
+                                </label>
+
+                                <div class="l  m10">
+                                    <input type="text" class="form-control fbinput w200" placeholder="企业内部编号/CMFYB编号" name="name" value="">
+                                </div>
+                                <div class="l control-label"><a href="s申请编号弹框.html" class="g9 fs14">申请CMFYB编号</a></div>
+                            </div>
+                        </div>
+                        <div class="clearfix l">
+                            <label class="l control-label rel">
+                                <span class="red">*</span>
+                                <span class="clname">封面图片：</span>
+                            </label>
+                            <div class="l m10" style="margin-top: 5px;">
+                                <a href="#">
+                                    <label for="up_imga" class="upload"><img src="__CDN__/assets/home/images/mrt.png" class="fmtp" id="imgShowa" style="width:40px;height:31px;"></label>
+                                    <input type="file" id="up_imga" style="display:none;"  name='file'>
+                                </a>
+                            </div>
+                            <div class="l fs12 ccyq">
+                                尺寸要求：257*145<br>
+                                其他尺寸会被系统压缩，影响视觉效果！
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb10">
+                        <label class="l control-label rel">
+                            <span class="red">*</span>
+                            <span class="clname">简介：</span>
+                        </label>
+                    </div>
+                    <div class="form-group mb10">
+                        <textarea type="text" placeholder="" class="form-control fbinput xg-height1" name="abstract"></textarea>
+                    </div>
+
+
+                </div>
+                <div class="bgwh">
+                    <div class="fabu-num p10 clearfix ">
+                        <span class="wh">*</span>
+                        <span class="clname ">详情</span>
+                    </div>
+                </div>
+                <div class="bgwh mb10">
+
+
+                    <div class="bdline">
+                        <div class="csbt clname ">
+                            <span class="wh">*</span>
+                            参数：
+                        </div>
+                        <div class="fbjuli">
+                            <div class="m10">
+                                <div class="fbcanshu  l">
+                                    <div class="csbd clearfix">
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[0][]">
+
+                                        <div class="l maohao">：</div>
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[0][]">
+                                    </div>
+                                    <div class="csbd clearfix">
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[2][]">
+
+                                        <div class="l maohao">：</div>
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[2][]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m10">
+                                <div class="fbcanshu l">
+                                    <div class="csbd clearfix">
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[1][]">
+
+                                        <div class="l maohao">：</div>
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[1][]">
+                                    </div>
+                                    <div class="csbd clearfix">
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[3][]">
+
+                                        <div class="l maohao">：</div>
+                                        <input type="text" class="form-control fbinput cskuan l" name="parameter[3][]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="rel m10">
+                                <div class="bangzhu2c">
+                                    <div class="fbcanshu l">
+                                        <div class="csbd clearfix">
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[4][]">
+
+                                            <div class="l maohao">：</div>
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[4][]">
+                                        </div>
+                                        <div class="csbd clearfix">
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[5][]">
+
+                                            <div class="l maohao">：</div>
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[5][]">
+                                        </div>
+                                    </div>
+                                    <div class="fbcanshu l">
+                                        <div class="csbd clearfix">
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[6][]">
+
+                                            <div class="l maohao">：</div>
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[6][]">
+                                        </div>
+                                        <div class="csbd clearfix">
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[7][]">
+
+                                            <div class="l maohao">：</div>
+                                            <input type="text" class="form-control fbinput cskuan l" name="parameter[7][]">
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="addzu show anniu">再添加一组</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fbjuli bdline fbyb-three  clearfix">
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="red">*</span>
+                                <span class="clname">材料：</span>
+                            </label>
+
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择材料</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="2">
+
+                                        <div class="fdj fdjsearch" data-type="2"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname">POM</span>”材料，</span>
+                                        <a data_c="fun" class="g0"><b>创建材料</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='material'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="wh">*</span>
+                                <span class="clname">耗材：</span>
+                            </label>
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择材料</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="2">
+
+                                        <div class="fdj fdjsearch" data-type="2"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname">POM</span>”材料，</span>
+                                        <a data_c="fun" class="g0"><b>创建材料</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='consumables'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="wh">*</span>
+                                <span class="clname">使用设备：</span>
+                            </label>
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择工艺设备</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="4">
+
+                                        <div class="fdj fdjsearch" data-type="4"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname">POM</span>”工艺设备，</span>
+                                        <a data_c="fun" class="g0"><b>创建工艺设备</b></a>
+                                    </div>
+                                    <div class="similar">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='device'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="red">*</span>
+                                <span class="clname">成型工艺：</span>
+                            </label>
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择成型工艺</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”成型工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建成型工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='moulding_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="wh">*</span>
+                                <span class="clname">表面工艺：</span>
+                            </label>
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择表面工艺</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”表面工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建表面工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='surface_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="xuanzecl">
+                            <label class=" control-label rel xuzebt ">
+                                <span class="wh">*</span>
+                                <span class="clname">连接工艺：</span>
+                            </label>
+                            <div class="rel m10">
+                                <!--<span class="tab"><a href="#">POM</a></span>-->
+                                <a class="dropdown-toggle bghui" data-toggle="dropdown" aria-expanded="true">
+                                    请选择连接工艺</a>
+                                    <div class="checkedcon checkedcon2">
+                                       <ul>
+                                          
+                                       </ul>
+                                       <span class="divspan"></span>
+                                    </div>
+
+                                <div class="dropdown-menuss cailiao-tc ">
+                                    <span class="dropdown-sq"></span>
+                                    <div class="search nomargin">
+                                        <input placeholder="请输入标题" data-required="true"
+                                               class="form-control getInfo " type="text" data-type="3">
+
+                                        <div class="fdj fdjsearch" data-type="3"><i class="fa fa-search"></i></div>
+                                    </div>
+                                    <div class="nofind">
+                                    <div class="findcl">
+                                        <span class="g9">没有找到“<span class="nofindname"></span>”连接工艺，</span>
+                                        <a data_c="fun" class="g0"><b>创建连接工艺</b></a>
+                                    </div>
+                                    <div class="device">
+                                        <div class="qtclbt">其他类似：</div>
+                                    </div>
+                                    </div>
+                                    <div class="show_release" data-field='join_process'>
+                                        <ul>
+                                           
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            
+                    </div>
+
+
+                </div>
+                <div class="bgwh mb10">
+
+                    <div class="fabu-num ">
+                        
+                        <div class="form-group mb10">
+                           <textarea id="editor_id" name="content" style="width:100%;height:350px;" placeholder="请输入要填写的内容">
+                            
+                            </textarea>
+                            
+                            </textarea>
+                        </div>
+                        <div class="fabu-num1 clearfix effect"  style="width:100%;">
+                            <div class="l per55" style="width:100%;">
+                                <div class="form-group clearfix">
+                                    <label class="l control-label rel pt0">
+                                        <span class="red">*</span>
+                                        <span class="clname">标签：</span>
+                                    </label>
+
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="磨砂" name="effect[]">
+                                    </div>
+                                    <div class="l  ">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="拉丝" name="effect[]">
+                                    </div>
+                                    <div class="l  m10">
+                                        <input type="text" class="form-control fbinput cskuan " placeholder="防腐蚀" name="effect[]">
+                                    </div>
+                                    <div class="l control-label pt0" id="addEffect"><a href="javascript:;" class="g9 fs14">添加</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="l m10">
+                                <div>
+                                    <i class="icon icon-gt"></i>
+                                    <span class="g9 fs14">请认真填写发布信息，这对指导设计师设计工作的开展有重大的帮助！</span>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input class="checkbox" name="agree" type="checkbox"><span class="g9 fs14">我已阅读并接受</span>
+                                        <a href="用户协议.html" class="red">《用户协议》</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="r mt10 m10">
+                                <input type="hidden" value="0" id="drafts" name="draft">
+                                <button class="btn  btn-regiest w80s mr5 button" type="button" data-draft="0">发布</button>
+                                <button class="btn  btn-regiest w80s button" type="button" data-draft="1">存草稿</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+<script type="text/html" id="func1_c">
+    <div class="clcjtk">
+        <div class="bt">材料<br>创建成功</div>
+        <div class="cjcg clearfix">
+            <ul>
+                <li><a id="close">继续<br>完善样板</a></li>
+                <li><a class="redbg" id="close2">完善<br>材料详情</a></li>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<script src="__CDN__/assets/home/js/uploadPreview.js"></script>
+
+<script charset="utf-8" src="__CDN__/assets/home/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="__CDN__/assets/home/kindeditor/lang/zh-CN.js"></script>
+<script type="text/javascript">
+//参数再添加一组
+$(".addzu").click(function(){
+    if($(this).hasClass("addzhu")){
+        $(this).removeClass("addzhu");
+        $(".bangzhu2c").hide();
+    }else{
+        $(this).addClass("addzhu");
+        $(".bangzhu2c").show();
+    }
+})
+
+//发布样板
+var flag=false;
+$(".button").click(function(){
+    var number = $("input[name='number']").val();
+    if(number==''){
+        layer.msg('样板编号不能为空');
+        return false;
+    }
+    var content = editor.html();
+    $("#editor_id").val(content);
+    if(content==''){
+        layer.msg('内容不能为空');
+        return false;
+    }
+    if(!$("input[name='agree']").is(":checked")){
+        layer.msg('请先阅读用户协议并勾选该项');
+        return false;
+    }
+    var draft=$(this).attr('data-draft');
+    $("#drafts").val(draft);
+    if(flag){
+        //return false;
+    }
+    flag=true;
+    var form=$("#submit_form");
+    var fd=new FormData(form.get(0));
+    var url=form.attr('action');
+    $.ajax({
+        url:url,
+        type:form.attr('method'),
+        processData:false,
+        contentType:false,
+        async:false,
+        data:fd,
+        beforeSend: function(){
+
+        },
+        success: function(data){
+          console.log(data);
+          eval('data='+data+'');
+          if(data.code==1){
+             layer.msg(data.msg);
+             setTimeout(function(){window.location.reload(0);}, 1000);
+          }else{
+             layer.msg(data.msg);
+          }
+          
+        },
+        complete: function(){
+
+        }
+
+      })
+});
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        new uploadPreview({UpBtn: "up_imga", DivShow: "imgdiva", ImgShow: "imgShowa"});
+    };
+</script>
+<script>
+    
+    KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+
+    });
+</script>
+{include file="common/fooder" /}
+</body>
+</html> 

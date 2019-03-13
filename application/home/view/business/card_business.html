@@ -1,0 +1,301 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l ">
+            <div class="tx">
+                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                    <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                </div>
+                <button class="btn  btn-gz m10 fb " type="submit">发&nbsp;&nbsp;布</button>
+
+            </div>
+            <ul class="nav nav-tabs redline qyxx">
+                <li class=""><a href="消息.html"> 消息</a></li>
+                <li class="active"><a href="我的企业.html">我的企业</a></li>
+                <li class=""><a href="我的订单.html">我的订单</a></li>
+                <li class=""><a href="偏好设置.html">偏好设置</a></li>
+                <li class=""><a href="账号安全.html">账号安全</a></li>
+            </ul>
+        </div>
+        <div class="fabu-content r">
+            <div class="fabubgwh p10-20 mb10 clearfix">
+                <table class="table table-bordered jb-mess w600 mb0 l myqy">
+                    <tbody>
+                    <tr>
+                        <th width="120">企业名称</th>
+                        <td><input class="form-control noborders tc" value="杭州托普科技有限公司" type="text">
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="l rel ml10">
+                    <a href="企业主页.html" class="btn-qq btn cjhei l  ">访问企业主页</a>
+                    <a href="javascript:;" data-toggle="modal" data-target="#myModalshop"
+                       class="db l shangzi myqy">商</a>
+                </div>
+                <div class="r">
+                    <a href="q企业认证.html" class="btn-qq btn cjhei ">企业认证</a>
+                </div>
+            </div>
+            <div class="fabubgwh p10-20 mb10 ">
+                <div class="qyrz-title">企业认证</div>
+            </div>
+            <form class="form-horizontal" id="submit_form" method="post" action="{:url('home/business/card_business')}" target="exec_target" enctype="multipart/form-data">
+                <div class="fabubgwh mb10 cljbmess">
+                    <div class="tjclbt">
+                        <div class="r g9">(用于展示，所有人可见,认证通过后不允许自主修改)</div>
+                        <div class="bt">基本信息：</div>
+                    </div>
+
+                    <div class="tjcl-view clearfix">
+                        <div class="biaodan l">
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">企业/组织：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="杭州天更有限公司" name="name">
+                                </div>
+                                <div class="l g9 clhg">(认证通过后，不允许自主修改)</div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">营业执照：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <a href="#"><label for="up_imga"><img src="__CDN__/assets/home/images/add.png"  id="imgShowa" style="width:122px;height:122px;"></label> </a>
+                                    <input type="file" id="up_imga" style="display:none;"  name='license_image'>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="l cltxright">
+                            <div class="red l txkd " >*</div>
+                            <div class="l tximgkd" >
+                                <div class="grtx-edit rel">
+                                    <a href="javascript:;" data_c="edit">
+                                        <!--<div class="edit-tx shows" style="display: none">修改头像</div>
+                                        <div class="txzhe"></div>-->
+                                        <label for="up_imgd" style="display:inline;"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80"  id="imgShowd" style="width:80px;height:80px;border-radius:50%;"></label>
+                                        <input type="file" id="up_imgd" style="display:none;"  name='logo'>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="l g9 cstip">请上传企业LOGO</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="fabubgwh mb10 cljbmess">
+                    <div class="tjclbt">
+                        <div class="r g9">(以下信息仅用于对接，不对外公布)</div>
+                        <div class="bt">网络推广负责人资料：</div>
+                    </div>
+                    <div class="tjcl-view clearfix">
+                        <div class="biaodan">
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">手机：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="138666666" name="mobile">
+                                </div>
+
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">邮箱：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="1221@qq.com" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="wh">*</span>
+                                    <span class="clname">ＱＱ：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="12213665" name="qq">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="wh">*</span>
+                                    <span class="clname">微信：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <input class="form-control clinput  w200" type="text" placeholder="fafd" name="wechat">
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <label class="l control-label rel">
+                                    <span class="red">*</span>
+                                    <span class="clname">身份证：</span>
+                                </label>
+                                <div class="l  m10">
+                                    <a href="#"><label for="up_imgb"><img src="__CDN__/assets/home/images/add.png" id="imgShowb" style="width:122px;height:122px;"></label> </a>
+                                    <input type="file" id="up_imgb" style="display:none;"  name='id_just'>
+                                </div>
+                                <div class="l  m10">
+                                    <a href="#"><label for="up_imgc"><img src="__CDN__/assets/home/images/add.png" id="imgShowc" style="width:122px;height:122px;"></label> </a>
+                                    <input type="file" id="up_imgc" style="display:none;"  name='id_back'>
+                                </div>
+                                <div class="l g9 addtip">请上传身份证，正反两面。</div>
+                            </div>
+                        </div>
+                        <div class="zjxy">
+                            <a href="javascript:;" class="bigbtn m30" id="button">提交完毕，下一步</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade cmyk  " id="myModalshop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="shopview clearfix">
+                    <div class="whbgyj">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                            <tr>
+                                <td align="right" width="100">企业名称</td>
+                                <td>杭州天更科技有限公司</td>
+                                <td align="right" width="100">注册地址</td>
+                                <td>浙江省杭州经济技术开发区科技园路57号17幢510室</td>
+                            </tr>
+                            <tr>
+                                <td align="right">统一社会信用代码</td>
+                                <td>1236523365242351W</td>
+                                <td align="right">法定代表人</td>
+                                <td>王天一</td>
+                            </tr>
+                            <tr>
+                                <td align="right">类型</td>
+                                <td>有限责任公司</td>
+                                <td align="right">注册资本</td>
+                                <td>人民币100万元</td>
+                            </tr>
+                            <tr>
+                                <td align="right">营业期限</td>
+                                <td>2017年10月27日至长期</td>
+                                <td align="right">成立日期</td>
+                                <td>2011年10月30日</td>
+                            </tr>
+                            <tr>
+                                <td align="right">登记机关</td>
+                                <td>杭州市市场监督管理局</td>
+                                <td align="right">认证时间</td>
+                                <td>2018.11.12</td>
+                            </tr>
+                            <tr>
+                                <td align="right">经营范围</td>
+                                <td colspan="3">
+                                    技术开发、技术服务、技术咨询、成果转让：数据处理技术、数据分析技术、数据整理技术、网络信息技术；服务：工业产品设计；其他无需报经审批的一切合法项目。（依法须经批准的项目，经相关部门批准后方可开展经营活动）
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="__CDN__/assets/home/js/uploadPreview.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            new uploadPreview({UpBtn: "up_imga", DivShow: "imgdiva", ImgShow: "imgShowa"});
+            new uploadPreview({UpBtn: "up_imgb", DivShow: "imgdivb", ImgShow: "imgShowb"});
+            new uploadPreview({UpBtn: "up_imgc", DivShow: "imgdivc", ImgShow: "imgShowc"});
+            new uploadPreview({UpBtn: "up_imgd", DivShow: "imgdivd", ImgShow: "imgShowd"});
+        };
+    </script>
+    <script type="text/javascript">
+        //提交认证
+        var flag = false;
+        $("#button").click(function(){
+            /*var name = $("input[name='name']").val();
+            if(name==''){
+                layer.msg('请输入企业/组织');
+                return false;
+            }
+            var mobile = $("input[name='mobile']").val();
+            if(mobile.search(/^1(3|4|5|7|8)\d{9}$/) == -1){
+                layer.msg('请输入正确的手机格式');
+                return false;
+            }
+            var email = $("input[name='email']").val();
+            if(email.search(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/) == -1){
+                layer.msg('请输入正确的邮箱格式');
+                return false;
+            }
+            var qq = $("input[name='qq']").val();
+            if(qq==''){
+                layer.msg('请输入ＱＱ');
+                return false;
+            }
+            var wechat = $("input[name='wechat']").val();
+            if(wechat==''){
+                layer.msg('请输入微信号');
+                return false;
+            }*/
+            if(flag){
+                return false;
+            }
+            flag = true;
+            var form=$("#submit_form");
+            var fd=new FormData(form.get(0));
+            var url=form.attr('action');
+            $.ajax({
+                url:url,
+                type:form.attr('method'),
+                processData:false,
+                contentType:false,
+                async:false,
+                data:fd,
+                beforeSend: function(){
+
+                },
+                success: function(data){
+                    //console.log(data);
+                    eval('data='+data+'');
+                    if(data.code==0){
+                        layer.msg(data.msg);
+                        setTimeout(function(){window.location.href=document.referrer;}, 1000);
+                        
+                    }else if(data.code==1){
+                        layer.msg(data.msg);
+                        //setTimeout(function(){window.location.href=document.referrer;}, 1000);
+                        setTimeout(function(){window.location.href="{:url('home/business/my_business')}";}, 1000);
+                        flag = false;
+                    }else{
+                        layer.msg(data.msg);
+                        flag = false;
+                    }
+
+                },
+                complete: function(){
+
+                }
+
+            })
+        });
+    </script>
+{include file="common/fooder" /}
+</body>
+</html> 

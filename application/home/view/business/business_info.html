@@ -1,0 +1,365 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+<div class="main-w">
+    <div class="grzy-top clearfix">
+        <div class="r grzy-num clearfix">
+            <ul>
+                <li><span class="fs36">{$business_info.user.popularity}</span><br>人气</li>
+                <li><span class="fs36">{$business_info.user.fans}</span><br>粉丝</li>
+                <li><span class="fs36">{$business_info.user.release}</span><br>发布</li>
+            </ul>
+        </div>
+        <div class="">
+            <div class="grtx l">
+                <div class="grtx-edit rel">
+                    <a href="{:url('home/user/avatar_editor')}" data_c="edit">
+                        <div class="edit-tx shows" style="display: none">修改头像</div>
+                        <div class="txzhe"></div>
+                        {if condition="$business_info.user.avatar eq ''"}
+                        <img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80">
+                        {else/}
+                        <img src="{$business_info.user.avatar}" class="tximg w80" style="border-radius:50%;">
+                        {/if}
+                    </a>
+                </div>
+                <button class="btn  btn-regiest w80 " type="submit">关注</button>
+            </div>
+            <div class="grxinxi">
+                <div class="gr-name">{$business_info.name}</div>
+                <div class="gr-comany ">
+                    {if condition="$business_info.company_type"}
+                    {volist name="$business_info.company_type" id="ctype"}
+                            <span class="gysaler l"> {$ctype}</span>&nbsp;
+                    {/volist}
+                    {/if}
+                    
+                    <div class="l">
+                        {if condition="$business_info.machining"}
+                        {volist name="$business_info.machining" id="mtype" key="mk"}
+                            <a href="javascript:;" class="shengchanjg ">{$mtype}</a> {if condition="$mk lt $business_info.machining_count"}|{/if}
+                        {/volist}
+                        {/if}
+                    </div>
+                    {if condition="!$business_id"}<a href="{:url('home/business/business_editor')}"><i class="fa fa-edit m5 qm-edit g9"></i></a>{/if}
+                </div>
+                <div class="inform  ">
+                    <div class="lxr l">联系人： <a href="javascript:;">{$business_info.user.username}</a></div>
+                    <div class="fahg l g9">
+                        <i class="icon icon-boshi l"></i>
+                        <a href="javascript:;"> <i class="fa fa-wechat m5"></i></a>
+                        <a href="javascript:;"><i class="fa fa-qq m5 "></i></a>
+                        <a href="javascript:;"><i class="fa fa-phone-square m5 "></i></a>
+                        {if condition="!$business_id"}<a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 g9"></i></a>{/if}
+                    </div>
+                </div>
+
+                <div class="inform mb0 clearfix">
+                    <div class="l gxqm">{if condition="$business_info.user.bio"}<span style="color:#333;">{$business_info.user.bio}</span>{else/}也许他文采不好，到现在都没有想到有创意的个性签名！{/if}</div>
+                    {if condition="!$business_id"}<a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 qm-edit g9"></i></a>{/if}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tabs-container switch grzy">
+    <div class="navbg ">
+
+        <div class="r kulj "><a href="{:url('home/business/business_info')}" class="redhx ">企业信息</a></div>
+        <ul class="nav nav-tabs redline">
+            <li class="cmfku grzl-t "><a  href="企业主页.html" > 他们的CMF库</a>
+            </li>
+            <li class="active"><a  href="企业信息.html" > 企业简介</a>
+            </li>
+            <li class=""><a  href="团队成员.html" >团队成员 </a>
+            </li>
+            <li class=""><a  href="企业粉丝.html" > 企业粉丝</a>
+            </li>
+            <li class=""><a  href="联系方式.html" > 联系方式</a>
+            </li>
+        </ul>
+    </div>
+    <div class=" tab-content">
+        <div id="tab-1" class="tab-pane active">
+            <div class="main-w bgwh yj5 jobnr rel mb10">
+                <div class="gr-edit">
+                    {if condition="!$business_id"}<a href="{:url('home/business/business_editor')}"><i class="fa fa-edit"></i></a>{/if}
+                </div>
+                <div class="job-jl">
+                        <h2 class="mb10 mt20">{$business_info.name}</h2>
+                        <div class="mb5"> 企业简介</div>
+                        <div class="qyjjbg">{$business_info.profile}</div>
+
+                </div>
+            </div>
+            <div class="main-w bgwh yj5 jobnr rel">
+                <div class="job-jl">
+                    <div class="mb20 ">
+                        <div class="mb5"> 基本信息</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">成立日期</th>
+                                <td width="">{$business_info.found_date}</td>
+                                <th width="140">注册资金</th>
+                                <td width="">{$business_info.enroll}</td>
+                                <th width="140">注册地址</th>
+                                <td width="">{$business_info.enroll_address}</td>
+                            </tr>
+                            <tr>
+                                <th width="140">主营产品或服务</th>
+                                <td colspan="5">{$business_info.main_products}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb10 clearfix">
+                        <div class="l mr10">企业类型：</div>
+                        <div class="qylx">
+                            <span class="tab">生产代工</span>
+                            <span class="tab">设备制造</span>
+                        </div>
+                    </div>
+                    <div class="mb20 ">
+                        <div class="mb5"> 经营模式</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">生产代工</th>
+                                <td><span class="tab redh"><a href="javascript:;">注塑</a> </span></td>
+
+                            </tr>
+                            <tr>
+                                <th width="140">设备制造</th>
+                                <td><span class="tab redh"><a href="javascript:;">塑胶模具</a> </span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb20 ">
+                        <div class="mb5"> 经营信息</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">主营市场</th>
+                                <td width="300">{$business_info.main_market}</td>
+                                <th width="140">员工人数</th>
+                                <td width="">
+                                    {$business_info.staff_num}
+                                </td>
+                                <th width="140">办公面积</th>
+                                <td width="">{$business_info.office_area}</td>
+                            </tr>
+                            <tr>
+                                <th width="140">主要客户</th>
+                                <td colspan="5">{$business_info.major_customers}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="tab-2" class="tab-pane ">
+            <div class="main-qp">
+<div class="main-w">
+                <div class="tdcy clearfix">
+                    <ul>
+                        <li>
+                            <div class="tx">
+                                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                                <button class="btn  btn-qq m10 " type="submit">QQ</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx">
+                                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                                <button class="btn  btn-qq m10 " type="submit">QQ</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx">
+                                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                                <button class="btn  btn-qq m10 " type="submit">QQ</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx">
+                                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                                <button class="btn  btn-qq m10 " type="submit">QQ</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx">
+                                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"> </div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                                <button class="btn  btn-qq m10 " type="submit">QQ</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="tab-3" class="tab-pane ">
+            <div class="mygz">
+                <div class="bgwh yj5 clearfix p10-20 g9 ">
+                    <div class="l f16">他们的粉丝</div>
+                    <div class="r">2.5万人关注了你</div>
+                </div>
+                <div class="wodegz clearfix">
+                    <ul>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="tab-4" class="tab-pane ">
+            <div class="main-w bgwh yj5 jobnr rel mb10">
+                <div class="gr-edit">
+                    <a href="企业资料编辑.html"><i class="fa fa-edit"></i></a>
+                </div>
+                <div class="job-jl">
+                    <h2 class="mb10 mt20">杭州托普科技有限公司</h2>
+                    <div class="mb5"> 企业简介</div>
+                    <div class="qyjjbg">青润温控通风设备有限公司座落于山东青州市开发区，毗邻309国道，济青高速青州西出口下与高铁青州市站均只需五分钟车程。 我公司主要生产重锤负压风机，普通负压风机，环流风机，推拉风机，不锈钢风机，防腐防爆负压风机，直联负压风机。订做异形风机，订做遮光罩，水帘墙，负压风机散件。 我公司有多年风机制造经验，拥有多台大型数控冲压.焊割.折弯机，动平衡仪，气动环槽卯机等设备。所精加工而成的产品具有外观良好，无划痕，技术稳定，质量可靠，经久耐用等优点。 我们致力于做低能耗，经久耐用之产品，产品广泛用于厂房通风降温排尘，畜牧养殖业，温室花卉等领域欢迎来电来厂洽谈。青润温控通风设备有限公司座落于山东青州市开发区，毗邻309国道，济青高速青州西出口下与高铁青州市站均只需五分钟车程。 我公司主要生产重锤负压风机，普通负压风机，环流风机，推拉风机，不锈钢风机，防腐防爆负压风机，直联负压风机。订做异形风机，订做遮光罩，水帘墙，负压风机散件。 我公司有多年风机制造经验，拥有多台大型数控冲压.焊割.折弯机，动平衡仪，气动环槽卯机等设备。所精加工而成的产品具有外观良好，无划痕，技术稳定，质量可靠，经久耐用等优点。 我们致力于做低能耗，经久耐用之产品，产品广泛用于厂房通风降温排尘，畜牧养殖业，温室花卉等领域欢迎来电来厂洽谈。</div>
+
+                </div>
+            </div>
+            <div class="main-qp">
+<div class="main-w">
+                <img src="__CDN__/assets/home/images/map.jpg">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{include file="common/fooder" /}
+</body>
+</html> 

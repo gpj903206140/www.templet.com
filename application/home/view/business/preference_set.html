@@ -1,0 +1,157 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<style>
+    .preference {
+        background: #f00;
+        padding: 5px 20px;
+        display: inline-block;
+        margin-right: 5px;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+    .preference:hover {
+        background: rgba(240,240,240,1);
+        color: #505050;
+        cursor:pointer;
+    }
+    .preference_box {
+        background: rgba(240,240,240,1);
+        color: #505050;
+    }
+</style>
+<div class="main-qp">
+    <div class="main-w clearfix">
+        <div class="tabs-container fabu-nav l ">
+            <div class="tx">
+                <div class="touxiang"><img src="__CDN__/assets/home/images/mrtx.png" class="tximg"></div>
+                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                    <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+                </div>
+                <button class="btn  btn-gz m10 fb " type="submit">发&nbsp;&nbsp;布</button>
+
+            </div>
+            <ul class="nav nav-tabs redline  qyxx">
+                <li class=""><a href="消息.html"> 消息</a></li>
+                <li class="active"><a href="我的企业.html">我的企业</a></li>
+                <li class=""><a href="我的订单.html">我的订单</a></li>
+                <li class=""><a href="偏好设置.html">偏好设置</a></li>
+                <li class=""><a href="账号安全.html">账号安全</a></li>
+            </ul>
+        </div>
+        <div class="fabu-content r">
+            <div class="fabubgwh p10-20 mb10 clearfix">
+                <table class="table table-bordered jb-mess w600 mb0 l myqy">
+                    <tbody>
+                    <tr>
+                        <th width="120">企业名称</th>
+                        <td><input class="form-control noborders tc" value="杭州托普科技有限公司" type="text">
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="l rel ml10">
+                    <a href="{:url('home/business/card_business')}" class="btn-qq btn cjhei l  ">访问企业主页</a>
+                    <a href="javascript:;" data-toggle="modal" data-target="#myModalshop"
+                       class="db l shangzi myqy">商</a>
+                </div>
+                <div class="r">
+                    <a href="{:url('home/business/card_business')}" class="btn-qq btn cjhei " id="card">企业认证</a>
+                </div>
+
+            </div>
+            <div class="fabubgwh  mb10 minh700">
+                <div class="tjclbt">
+                    <div class="bt">企业偏好设置</div>
+                </div>
+                <div class="qyzyxianshi">
+                    <div class="bt">企业主页显示：</div>
+                    {volist name="arr" id="item"}
+                    <label for="set{$item.id}" class="preference">{$item.name}</label><input type="checkbox" name="set[]" id="set{$item.id}" value="{$item.id}" style="display:none;">
+                    {/volist}
+                </div>
+            </div>
+
+        </div>
+    </div>
+<!-- Modal -->
+<div class="modal fade cmyk  " id="myModalshop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="shopview clearfix">
+                    <div class="whbgyj">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                            <tr>
+                                <td align="right" width="100">企业名称</td>
+                                <td>杭州天更科技有限公司</td>
+                                <td align="right" width="100">注册地址</td>
+                                <td>浙江省杭州经济技术开发区科技园路57号17幢510室</td>
+                            </tr>
+                            <tr>
+                                <td align="right">统一社会信用代码</td>
+                                <td>1236523365242351W</td>
+                                <td align="right">法定代表人</td>
+                                <td>王天一</td>
+                            </tr>
+                            <tr>
+                                <td align="right">类型</td>
+                                <td>有限责任公司</td>
+                                <td align="right">注册资本</td>
+                                <td>人民币100万元</td>
+                            </tr>
+                            <tr>
+                                <td align="right">营业期限</td>
+                                <td>2017年10月27日至长期</td>
+                                <td align="right">成立日期</td>
+                                <td>2011年10月30日</td>
+                            </tr>
+                            <tr>
+                                <td align="right">登记机关</td>
+                                <td>杭州市市场监督管理局</td>
+                                <td align="right">认证时间</td>
+                                <td>2018.11.12</td>
+                            </tr>
+                            <tr>
+                                <td align="right">经营范围</td>
+                                <td colspan="3">
+                                    技术开发、技术服务、技术咨询、成果转让：数据处理技术、数据分析技术、数据整理技术、网络信息技术；服务：工业产品设计；其他无需报经审批的一切合法项目。（依法须经批准的项目，经相关部门批准后方可开展经营活动）
+                                </td>
+
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //选中偏好
+    $(".preference").click(function(){
+        if($(this).hasClass("preference_box")){
+            $(this).removeClass('preference_box');
+        }else{
+            $(this).addClass('preference_box');
+        }
+    })
+    //前往企业认证并保存偏好设置
+    $("#card").click(function(){
+        var set = [];
+        $("input[name='set[]']:checked").each(function(){
+            set.push($(this).val());
+        })
+        var url = this.href;
+        $.post("{:url('home/business/preference_set')}",{set:set},function(data){
+             if(data==1){
+                 window.location.href=url;
+             }
+        })
+        return false;
+    })
+</script>
+
+{include file="common/fooder" /}
+</body>
+</html> 

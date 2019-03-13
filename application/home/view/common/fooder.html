@@ -1,0 +1,370 @@
+    <div class="foot">
+
+        <div class="main-w">
+            <div class="ftline clearfix">
+                <div class="footnav l">
+                    <a href="javascript:;">帮助中心</a>
+                    <a href="javascript:;">用户协议</a>
+                    <a href="javascript:;">用户反馈</a>
+                    <a href="javascript:;">企业服务</a>
+                    <a href="javascript:;">加入专家团</a>
+                    <a href="javascript:;">申请CMFYB编号</a>
+                    <a href="javascript:;">关于我们</a>
+                    <a href="javascript:;">诚聘英才</a>
+                    <a href="javascript:;">联系我们</a>
+                </div>
+                <div class="r">
+                    <div class="small-chat-box tck">
+                        <img src="__CDN__/assets/home/images/ewm.png">
+                    </div>
+                    <a class="open-small-chat nbg">
+                        <i class="fa fa-wechat"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div class="ftbq">COPYRIGHT (©) 2018 杭州天更科技有限公司. 浙ICP备12021373号</div>
+
+    </div>
+</div>
+<div id="small-chat" class="ftgd">
+    <ul>
+        <li><a href="#top" class="back-to-top">TOP</a></li>
+        <li class="cart">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#" aria-expanded="false">
+                <i class="fa fa-shopping-cart"></i> <span class="label label-danger">8</span>
+            </a>
+        </li>
+        <li class="yj">
+            <a href="用户反馈.html" title="反馈有惊喜">意见<br>反馈
+            </a>
+    </ul>
+
+</div>
+</div>
+<script src="__CDN__/assets/home/bootstrap/js/jquery.min.js?v=2.1.4"></script>
+<script src="__CDN__/assets/home/bootstrap/js/bootstrap.min.js?v=3.3.5"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/layer/layer.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/hplus.min.js?v=4.0.0"></script>
+<script type="text/javascript" src="__CDN__/assets/home/bootstrap/js/contabs.min.js"></script>
+<script src="__CDN__/assets/home/bootstrap/js/plugins/pace/pace.min.js"></script>
+<script type="text/javascript" src="__CDN__/assets/home/js/jquery.row-grid.js"></script>
+<script src="__CDN__/assets/home/layer/layer.js"></script>
+<script src="__CDN__/assets/home/layer/extend/layer.ext.js"></script>
+<script type="text/javascript" src="__CDN__/assets/home/js/template.js"></script>
+<script>
+//他发布的赞...
+$(".addattitude3").click(function(){
+    var msg = $(this).attr('data-msg');
+    var span=$(this).find("span.status");
+    var url=this.href;
+    var t=$(this);
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg(msg+'成功');
+            span.html(span.html()*1+1);
+            t.addClass("showbg2");
+        }else if(result==2){
+            layer.msg(msg+'失败');
+        }else if(result==3){
+            layer.msg('取消'+msg+'成功');
+            span.html(span.html()*1-1);
+            t.removeClass("showbg2");
+        }else if(result==4){
+            layer.msg('取消'+msg+'失败');
+        }
+    })
+    return false;
+})
+
+//新建盒子
+$(".addbox").click(function(){
+    var boxs=$(this).parent().siblings(".boxval");
+    var name=boxs.val();
+    var link=$(this).attr('data-link');
+    if(name==''){
+        layer.msg('请输入盒子名称');
+        return false;
+    }
+    var url="{:url('home/release/cmfbox')}";
+    $.post(url,{name:name},function(data){
+        eval('data='+data+'');
+        if(data.code==1){
+          layer.msg(data.msg);
+          var html='<li><a href="'+link+'&sid='+data.id+'" class="addattitude2"><i class="fa fa-cube red nosel"></i>'+name+'</a></li>';alert
+          $(".tops").before(html);
+          boxs.val("");
+          $(".boxopen").addClass("open");
+          //setTimeout(function(){window.location.reload(0);}, 1000);
+        }else{
+          layer.msg(data.msg);
+        }
+    })
+    return false;
+})
+//加入盒子
+$("body").on("click",".addattitude2",function(){
+    var span=$(this).parents(".boxparent").find("span.boxstatus");
+    var icon=$(this).parents(".boxparent").find("i.icon-cube3");
+    var url=this.href;
+    var sel=$(this).find("i");
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg('已加入盒子');
+            span.html(span.html()*1+1);
+            $(".boxopen").removeClass("open");
+            sel.removeClass("nosel");
+            sel.addClass("sel");
+            if(span.html()*1+1>0){
+                icon.addClass("icon-cube4");
+            }else{
+                icon.removeClass("icon-cube4");
+            }
+        }else if(result==2){
+            layer.msg('加入盒子失败');
+        }else if(result==3){
+            layer.msg('已从盒子里删除');
+            span.html(span.html()*1-1);
+            $(".boxopen").removeClass("open");
+            sel.removeClass("sel");
+            sel.addClass("nosel");
+            if(span.html()*1-1>0){
+                icon.addClass("icon-cube4");
+            }else{
+                icon.removeClass("icon-cube4");
+            }
+        }else if(result==4){
+            layer.msg('已从盒子里删除失败');
+        }
+    });
+    return false;
+})
+//踩,赞...
+$(".addattitude").click(function(){
+    var msg = $(this).attr('data-msg');
+    var span=$(this).find("span.status");
+    var url=this.href;
+    var t=$(this);
+    $.get(url,function(result){
+        if(result==1){
+            layer.msg(msg+'成功');
+            span.html(span.html()*1+1);
+            t.addClass("showbg");
+        }else if(result==2){
+            layer.msg(msg+'失败');
+        }else if(result==3){
+            layer.msg('取消'+msg+'成功');
+            span.html(span.html()*1-1);
+            t.removeClass("showbg");
+        }else if(result==4){
+            layer.msg('取消'+msg+'失败');
+        }
+    })
+    return false;
+})
+</script>
+<script type="text/javascript">
+/*//搜索框右边展开或收起已选中的信息
+$("body").on("click",".dropdown-sq",function(){
+        $(this).parents(".dropdown-menuss").hide();
+        $(this).removeClass("tshow");
+        $(this).parents(".dropdown-menuss").siblings(".dropdown-toggle").removeClass("tshow");
+})
+//展开或收起已选中的信息
+$("body").on("click",".checkedcon span.divspan",function(){
+     if($(this).hasClass("divspan2")){
+         $(this).removeClass("divspan2");
+         $(this).parents(".checkedcon").addClass("checkedcon2");
+     }else{
+        $(this).addClass("divspan2");
+        $(this).parents(".checkedcon").removeClass("checkedcon2");
+     }
+})
+//搜索为空时点击其他类似, 选择&取消选择材料等信息
+$("body").on("click",".similar a",function(){
+   var field=$(this).parents(".similar").siblings(".show_release").attr('data-field');
+   var parent=$(this).parents(".dropdown-menuss").siblings('.checkedcon').find('ul');
+   var checkedcon=$(this).parents(".dropdown-menuss").siblings('.checkedcon');
+   var tid=$(this).attr('data-likenessid');
+   var name=$(this).attr('data-likenessname');
+   if($(this).hasClass("labelChecked")){
+       $(this).removeClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+   }else{
+       $(this).addClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+       var html='';
+       html='<li class="lis'+tid+'">'+name+'<input type="hidden" value="'+tid+'" name="'+field+'['+tid+'][id]"><input type="hidden" value="'+name+'" name="'+field+'['+tid+'][name]"><span class="lispan"></span></li>';
+       parent.prepend(html);
+       checkedcon.show();
+   }
+})
+//删除已选中的材料等信息
+$("body").on("click",".lispan",function(){
+    $(this).parent().remove();
+})
+//搜索出信息后选择&取消选择材料等信息
+$("body").on("click",".show_release label",function(){
+   var field=$(this).parents(".show_release").attr('data-field');
+   var parent=$(this).parents(".dropdown-menuss").siblings('.checkedcon').find('ul');
+   var checkedcon=$(this).parents(".dropdown-menuss").siblings('.checkedcon');
+   var id=$(this).attr('for');
+   var tid=$("#"+id).val();
+   var name=$("#shows"+tid).val();
+   if($(this).hasClass("labelChecked")){
+       $(this).removeClass("labelChecked");
+       parent.find(".lis"+tid).remove();
+   }else{
+       $(this).addClass("labelChecked");
+       var html='';
+       parent.find(".lis"+tid).remove();
+       html='<li class="lis'+tid+'" title="'+name+'">'+name+'<input type="hidden" value="'+tid+'" name="'+field+'['+tid+'][id]"><input type="hidden" value="'+name+'" name="'+field+'['+tid+'][name]"><span class="lispan"></span></li>';
+       parent.prepend(html);
+       checkedcon.show();
+   }
+})
+//显示或隐藏搜索
+$(".dropdown-toggle").click(function(){
+    if($(this).hasClass("tshow")){
+        $(this).removeClass("tshow");
+        $(this).siblings(".dropdown-menuss").hide();
+    }else{
+        $(this).addClass("tshow");
+        $(this).siblings(".dropdown-menuss").show();
+    }
+    
+})
+
+
+//点击搜索图标搜索材料等
+$("body").on("click",".fdjsearch",function(){
+    var type=$(this).attr('data-type');
+    var val=$(this).siblings(".getInfo").val();
+    seach_release($(this),type,val);
+})
+//回车搜索材料等
+$('.getInfo').keydown(function(e){
+    if(e.keyCode==13){
+       var type=$(this).attr('data-type');
+       var val=$(this).val();
+       seach_release($(this),type,val);
+    }
+});
+function seach_release(obj,type,val){
+   var url="{:url('home/release/getRelease_info')}";
+   var parent=obj.parent().siblings('.show_release').find('ul');
+   var parent2=obj.parent().siblings('.nofind').find('.similar');
+   var parent3=obj.parent().siblings('.nofind').find('.findcl span.nofindname');
+
+   $.post(url,{type:type,val:val},function(data){
+     eval('data='+data+'');
+     var html='';
+     if(data.length>0){
+        for(var i=0;i<data.length;i++){
+            html+='<li>';
+            html+='<input type="checkbox" id="show'+data[i]['id']+'" class="hidebox" value="'+data[i]['id']+'"><input type="hidden" id="shows'+data[i]['id']+'" value="'+data[i]['name']+'">';
+            html+='<label for="show'+data[i]['id']+'">'+data[i]['name']+'</label>';
+            html+='</li>'; 
+        }
+     }else{
+        $.post(url,{state:1,type:type},function(result){
+             eval('result='+result+'');
+             var html2='<div class="qtclbt">其他类似：</div>';
+             for(var i=0;i<result.length;i++){
+                html2+='<a href="javascript:;" class="lslink g9" data-likenessid="'+result[i]['id']+'"  data-likenessname="'+result[i]['name']+'">'+result[i]['name']+'</a>&nbsp;&nbsp;&nbsp;';
+            }
+            parent3.html(val);
+            parent2.html(html2);
+            $(".nofind").show();
+        })
+     }
+     parent.html(html);
+     $(".nofind").hide();
+   })
+}*/
+
+</script>
+
+<script>
+  /* //添加标签
+    $("#addEffect").click(function(){
+        var val='<div class="l  m10"><input type="text" class="form-control fbinput cskuan " placeholder="" name="effect[]"></div>';
+        $(this).before(val);
+    })
+    //添加别名
+    $(".addalias").click(function(){
+        var val='<input type="text" class="form-control fbinput w200" name="alias[]" style="margin-bottom:10px;">';
+        $(this).siblings(".m10").append(val);
+    })*/
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+    });
+    $(document).ready(function () {
+        $('[data_c=edit]').hover(function () {
+            var shangji = $(this).parents('body');
+            if (shangji.find(".shows").length > 0) {
+                shangji.find('.edit-tx').removeClass('shows');
+                shangji.find('.edit-tx').show();
+            } else {
+                shangji.removeClass('display');
+                shangji.find('.edit-tx').addClass('shows');
+                shangji.find('.edit-tx').hide();
+            }
+
+        });
+    });
+    $('.video').mouseover(function () {
+        $(this).find(".bf").show();
+    });
+    $('.video').mouseleave(function () {
+        $(this).find(".bf").hide();
+    });
+
+    $('.toggle').on('click', function () {
+        var cur = $(this).text();
+        if (cur) {
+            $(this).text(cur === '图文并茂' ? '只看图片' : '图文并茂');
+        }
+    });
+    $('.about-lock').click(function () {
+        $(this).find('i').toggleClass('fa-lock fa-unlock-alt')
+    });
+    $('.about-eye').click(function () {
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash')
+    });
+</script>
+
+
+<script src="__CDN__/assets/home/js/TouchSlide.js"></script>
+<script>
+//退出登录
+$("#loginOut").click(function(){
+    var url="{:url('home/login/loginOut')}";
+    $.post(url,{name:'loginout'},function(reslut){
+        if(reslut){
+            layer.msg('退出登录成功');
+            setTimeout(function(){location.reload();}, 500);
+        }
+        
+    })
+})
+</script>
+<script>
+    TouchSlide({
+        slideCell: "#focus",
+        titCell: ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+        mainCell: ".bd ul",
+        effect: "leftLoop",
+        autoPlay: true, // 自动播放
+        autoPage: true, // 自动分页
+        delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+        interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+        switchLoad: "_src" // 切换加载，真实图片路径为"_src"
+    });
+
+</script>

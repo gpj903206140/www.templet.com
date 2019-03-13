@@ -1,0 +1,180 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('User_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-user_id" data-rule="required" data-source="user/user/index" data-field="nickname" class="form-control selectpage" name="row[user_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Logo')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-logo" class="form-control" name="row[logo]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('License_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-license_image" class="form-control" size="50" name="row[license_image]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-license_image" class="btn btn-danger plupload" data-input-id="c-license_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-license_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-license_image" class="btn btn-primary fachoose" data-input-id="c-license_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-license_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-license_image"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mobile')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mobile" class="form-control" name="row[mobile]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Email')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-email" class="form-control" name="row[email]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Qq')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-qq" class="form-control" name="row[qq]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Wechat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-wechat" class="form-control" name="row[wechat]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Id_just')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-id_just" class="form-control" name="row[id_just]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Id_back')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-id_back" class="form-control" name="row[id_back]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Credit_code')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-credit_code" class="form-control" name="row[credit_code]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Legal')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-legal" class="form-control" name="row[legal]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Office')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-office" class="form-control" name="row[office]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Found_date')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-found_date" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[found_date]" type="text" value="{:date('Y-m-d')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Enroll')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-enroll" class="form-control" name="row[enroll]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Enroll_address')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-enroll_address" class="form-control" name="row[enroll_address]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Main_products')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-main_products" class="form-control" name="row[main_products]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_type" class="form-control" name="row[company_type]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Machining')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-machining" class="form-control" name="row[machining]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Device')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-device" class="form-control" name="row[device]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Main_market')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-main_market" class="form-control" name="row[main_market]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Staff_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-staff_num" class="form-control" name="row[staff_num]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Office_area')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-office_area" class="form-control" name="row[office_area]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Major_customers')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-major_customers" class="form-control" name="row[major_customers]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Preference')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-preference" class="form-control" name="row[preference]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Trial')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-trial" class="form-control" name="row[trial]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Addtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-addtime" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[addtime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

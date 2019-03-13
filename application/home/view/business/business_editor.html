@@ -1,0 +1,583 @@
+{include file="common/headPath" /}
+{include file="common/header" /}
+<div class="main-qp">
+<div class="main-w">
+    <div class="grzy-top clearfix">
+        <div class="r grzy-num clearfix">
+            <ul>
+                <li><span class="fs36">{$business_info.user.popularity}</span><br>人气</li>
+                <li><span class="fs36">{$business_info.user.fans}</span><br>粉丝</li>
+                <li><span class="fs36">{$business_info.user.release}</span><br>发布</li>
+            </ul>
+        </div>
+        <div class="">
+            <div class="grtx l">
+                <div class="grtx-edit rel">
+                    <a href="{:url('home/user/avatar_editor')}" data_c="edit">
+                        <div class="edit-tx shows" style="display: none">修改头像</div>
+                        <div class="txzhe"></div>
+                        {if condition="$business_info.user.avatar eq ''"}
+                        <img src="__CDN__/assets/home/images/mrtx.png" class="tximg w80">
+                        {else/}
+                        <img src="{$business_info.user.avatar}" class="tximg w80" style="border-radius:50%;">
+                        {/if}
+                    </a>
+                </div>
+                <button class="btn  btn-regiest w80 " type="submit">关注</button>
+            </div>
+            <div class="grxinxi">
+                <div class="gr-name ">
+                    <div class="l">{$business_info.name}</div>
+                    <a href="javascript:;" data-toggle="modal" data-target="#myModalshop" class="db l shangzi">商</a>
+                </div>
+                <div class="gr-comany ">
+                    {if condition="$business_info.company_type"}
+                    {volist name="$business_info.company_type" id="ctype"}
+                            <span class="gysaler l"> {$ctype}</span>&nbsp;
+                    {/volist}
+                    {/if}
+                    <div class="l">
+                        {if condition="$business_info.machining"}
+                        {volist name="$business_info.machining" id="mtype" key="mk"}
+                            <a href="javascript:;" class="shengchanjg ">{$mtype}</a> {if condition="$mk lt $business_info.machining_count"}|{/if}
+                        {/volist}
+                        {/if}
+                    </div>
+                    <a href="{:url('home/business/business_editor')}"><i class="fa fa-edit m5 qm-edit g9"></i></a>
+                </div>
+                <div class="inform  ">
+                    <div class="lxr l">联系人： <a href="javascript:;">{$business_info.user.username}</a></div>
+                    <div class="fahg l g9">
+                        <i class="icon icon-boshi l"></i>
+                        <a href="javascript:;"> <i class="fa fa-wechat m5"></i></a>
+                        <a href="javascript:;"><i class="fa fa-qq m5 "></i></a>
+                        <a href="javascript:;"><i class="fa fa-phone-square m5 "></i></a>
+                        <a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 g9"></i></a>
+                    </div>
+                </div>
+
+                <div class="inform mb0 clearfix">
+                    <div class="l gxqm">{if condition="$business_info.user.bio"}<span style="color:#333;">{$business_info.user.bio}</span>{else/}也许他文采不好，到现在都没有想到有创意的个性签名！{/if}</div>
+                    <a href="{:url('home/user/data_editor')}"><i class="fa fa-edit m5 qm-edit g9"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tabs-container switch grzy">
+    <div class="navbg ">
+
+        <div class="r kulj "><a href="{:url('home/business/business_info')}" class="redhx ">企业信息</a></div>
+        <ul class="nav nav-tabs redline">
+            <li class="cmfku grzl-t "><a data-toggle="tab" href="#tab-10" aria-expanded="true"> 他们的CMF库</a>
+            </li>
+            <li class="active"><a  href="企业信息.html" > 企业简介</a>
+            </li>
+            <li class=""><a href="团队成员.html">团队成员 </a>
+            </li>
+            <li class=""><a href="企业粉丝.html"> 企业粉丝</a>
+            </li>
+            <li class=""><a href="联系方式.html"> 联系方式</a>
+            </li>
+        </ul>
+    </div>
+    <form class="form-horizontal" id="submit_form" method="post" action="{:url('home/business/business_editor')}" target="exec_target" enctype="multipart/form-data">
+    <div class=" tab-content">
+        <div id="tab-1" class="tab-pane active">
+            <div class="main-w bgwh yj5 jobnr rel mb10">
+                <div class="gr-edit">
+                    <a href="{:url('home/business/business_info')}" class="close-fs">X</a>
+                </div>
+            <table class="table table-bordered jb-mess w600">
+                <tbody>
+
+                <tr>
+                    <th width="140">企业名称</th>
+                    <td><input class="form-control noborders" value="{$business_info.name}"  type="text" name="name"></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+            <div class="mb20">
+                <div class="mb5"> 企业简介</div>
+                <textarea type="text" class="form-control fbinput qyjj xg-height2" name="profile">{$business_info.profile}</textarea>
+            </div>
+            </div>
+            <div class="main-w bgwh yj5 jobnr rel">
+
+                <div class="job-jl">
+
+                    <div class="mb20 ">
+                        <div class="mb5"> 基本信息</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">成立日期</th>
+                                <td><input class="form-control noborders" value="{$business_info.found_date}" type="date" name="found_date" style="line-height:20px;padding:0"></td>
+                                <th width="140">注册资金</th>
+                                <td><input class="form-control noborders" value="{$business_info.enroll}" type="text" name="enroll"></td>
+                                <th width="140">注册地址</th>
+                                <td><input class="form-control noborders" value="{$business_info.enroll_address}" type="text" name="enroll_address"></td>
+                            </tr>
+                            <tr>
+                                <th width="140">主营产品或服务</th>
+                                <td colspan="5" style="padding:0;"><input type="text" name="main_products" value="{$business_info.main_products}" style="width:94%;height:35px;border:none;outline:none;padding:0 1%;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb20 clearfix">
+                        {if condition="$business_info.company_type"}
+                        <p style="color:#f00;">
+                        已选择: {volist name="$business_info.company_type" id="ctype"}
+                            {$ctype}&nbsp;&nbsp;
+                        {/volist}
+                        (不选中默认不修改)</p>
+                        {/if}
+                        
+                        <div class="l mr10">企业类型：</div>
+                        <div class="qylx">
+                            <div class="mb10">
+                                <label class="fbclname "><input type="radio" value="供应商" name="company_type[]"> 供应商</label>
+                                <label class="fbclname "><input type="radio" value="工业设计" name="company_type[]"> 工业设计</label>
+                                <label class="fbclname "><input type="radio" value="品牌运营" name="company_type[]"> 品牌运营</label>
+                                <label class="fbclname "><input type="radio" value="其他企业" name="company_type[]"> 其他企业</label>
+                                <input type="text" class="form-control qyinput" name="company_type[]">
+
+                            </div>
+                            <div class="mb10">
+                                <label class="fbclname "><input type="checkbox" value="材料生产" name="company_type[]"> 材料生产</label>
+                                <label class="fbclname "><input type="checkbox" value="设备制造" name="company_type[]"> 设备制造</label>
+                                <label class="fbclname "><input type="checkbox" value="生产代工" name="company_type[]"> 生产代工</label>
+                                <label class="fbclname "><input type="checkbox" value="快速成型" name="company_type[]"> 快速成型</label>
+                                <label class="fbclname "><input type="checkbox" value="其他" name="company_type[]"> 其他</label>
+                                <input type="text" class="form-control qyinput" name="company_type[]">
+                            </div>
+                        </div>
+                        <div class="g9 b-line">提示：只有供应商才能发布＂样板＂。</div>
+                    </div>
+                    <div class="mb20 ">
+                        <div class="mb5"> 经营模式</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">生产加工</th>
+                                <td> <label class="fbclname "><input type="checkbox" value="注塑" name="machining[]"> 注塑</label>
+                                    <label class="fbclname "><input type="checkbox" value="设备制造" name="machining[]"> 设备制造</label>
+                                    <label class="fbclname "><input type="checkbox" value="生产代工" name="machining[]"> 生产代工</label>
+                                    <label class="fbclname "><input type="checkbox" value="快速成型" name="machining[]"> 快速成型</label>
+                                    <label class="fbclname "><input type="checkbox" value="其他" name="machining[]"> 其他</label>
+                                    <input type="text" class="form-control qyinput" name="machining[]">
+                                    {if condition="$business_info.machining"}
+                                    <p style="display:inline-block;margin-left:20px;color:#f00;">
+                                    已选择: {volist name="$business_info.machining" id="mtype"}
+                                        {$mtype}&nbsp;&nbsp;
+                                    {/volist}
+                                    (不选中默认不修改)<p>
+                                    {/if}
+                                </td>
+
+                            </tr>
+                            <tr>
+
+                                <th width="140">设备制造</th>
+                                <td><label class="fbclname "><input type="checkbox" value="塑料模具" name="device[]"> 塑料模具</label>
+                                    <label class="fbclname "><input type="checkbox" value="设备制造" name="device[]"> 设备制造</label>
+                                    <label class="fbclname "><input type="checkbox" value="生产代工" name="device[]"> 生产代工</label>
+                                    <label class="fbclname "><input type="checkbox" value="快速成型" name="device[]"> 快速成型</label>
+                                    <label class="fbclname "><input type="checkbox" value="其他" name="device[]"> 其他</label>
+                                    <input type="text" class="form-control qyinput" name="device[]">
+                                    {if condition="$business_info.device"}
+                                    <p style="display:inline-block;margin-left:20px;color:#f00;">
+                                    已选择: {volist name="$business_info.device" id="dtype"}
+                                        {$dtype}&nbsp;&nbsp;
+                                    {/volist}
+                                    (不选中默认不修改)<p>
+                                    {/if}      
+                                    </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb20 ">
+                        <div class="mb5"> 经营信息</div>
+                        <table class="table table-bordered jb-mess">
+                            <tbody>
+
+                            <tr>
+                                <th width="140">主营市场</th>
+                                <td><input class="form-control noborders" value="{$business_info.main_market}"  type="text" name="main_market"></td>
+                                <th width="140">员工人数{$business_info.staff_num}</th>
+                                <td>
+                                    <select class="input-sm form-control input-s-sm inline noborders" name="staff_num">
+                                        <option value="1-10人" {if condition="$business_info.staff_num eq '11-50人'"}selected{/if}>1-10人</option>
+                                        <option value="11-50人" {if condition="$business_info.staff_num eq '11-50人'"}selected{/if}>11-50人</option>
+                                        <option value="51-100人" {if condition="$business_info.staff_num eq '51-100人'"}selected{/if}>51-100人</option>
+                                        <option value="101-500人" {if condition="$business_info.staff_num eq '101-500人'"}selected{/if}>101-500人</option>
+                                        <option value="501-1000人" {if condition="$business_info.staff_num eq '501-1000人'"}selected{/if}>501-1000人</option>
+                                        <option value="1001-5000人" {if condition="$business_info.staff_num eq '1001-5000人'"}selected{/if}>1001-5000人</option>
+                                        <option value="5001-1万人" {if condition="$business_info.staff_num eq '5001-1万人'"}selected{/if}>5001-1万人</option>
+                                        <option value="1万人以上" {if condition="$business_info.staff_num eq '1万人以上'"}selected{/if}>1万人以上</option>
+                                    </select>
+                                </td>
+                                <th width="140">办公面积</th>
+                                <td><input class="form-control noborders" value="{$business_info.office_area}" type="text" name="office_area"></td>
+                            </tr>
+                            <tr>
+                                <th width="140">主要客户</th>
+                                <td colspan="5" style="padding:0;"><input type="text" name="major_customers" value="{$business_info.major_customers}" style="width:94%;height:35px;border:none;outline:none;padding:0 1%;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="r">
+                        <button class="btn  btn-regiest w100 " type="button" id="button">保存</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div id="tab-2" class="tab-pane ">
+            <div class="mygz">
+                <div class="bgwh yj5 clearfix p10-20 g9 ">
+                    <div class="l f16">我的关注</div>
+                    <div class="r">关注了561个用户</div>
+                </div>
+                <div class="wodegz clearfix">
+                    <ul>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">已关注</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="tab-3" class="tab-pane ">
+            <div class="mygz">
+                <div class="bgwh yj5 clearfix p10-20 g9 ">
+                    <div class="l f16">我的粉丝</div>
+                    <div class="r">2.5万人关注了你</div>
+                </div>
+                <div class="wodegz clearfix">
+                    <ul>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tx clearfix">
+                                <div class="touxiang"><a href="javascript:;"><img src="__CDN__/assets/home/images/mrtx.png"
+                                                                                  class="tximg"></a></div>
+                                <div class="mess"><a href="个人信息.html">王二虎</a>&nbsp;&nbsp;工程师<br>
+                <a href="企业信息.html" class="g9">杭州迷彩材料科技有限公司</a>
+            </div>
+                                <button class="btn  btn-gz m10 " type="submit">关注</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+    <!-- Modal -->
+    <div class="modal fade cmyk  " id="myModalshop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document" >
+            <div class="modal-content"  >
+                <div class="modal-body"  >
+                    <div class="shopview clearfix">
+                        <div class="whbgyj">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                                <tr>
+                                    <td align="right" width="100">企业名称</td>
+                                    <td>{$business_info.name}</td>
+                                    <td align="right" width="100">注册地址</td>
+                                    <td>{$business_info.enroll_address}</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">统一社会信用代码</td>
+                                    <td>{$business_info.credit_code}</td>
+                                    <td align="right">法定代表人</td>
+                                    <td>{$business_info.legal}</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">类型</td>
+                                    <td>
+                                        {if condition="$business_info.company_type"}
+                                        {volist name="$business_info.company_type" id="ctype"}
+                                            {$ctype}&nbsp;
+                                        {/volist}
+                                        {/if}
+                                    </td>
+                                    <td align="right">注册资本</td>
+                                    <td>{$business_info.enroll}</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">营业期限</td>
+                                    <td>{$business_info.name}</td>
+                                    <td align="right">成立日期</td>
+                                    <td>{$business_info.found_date}</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">登记机关</td>
+                                    <td>{$business_info.office}</td>
+                                    <td align="right">认证时间</td>
+                                    <td>{$business_info.trial_time|date='Y-m-d',###}</td>
+                                </tr>
+                                <tr>
+                                    <td align="right">经营范围</td>
+                                    <td colspan="3">{$business_info.main_products}</td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+        //提交认证
+        var flag = false;
+        $("#button").click(function(){
+            if(flag){
+                return false;
+            }
+            flag = true;
+            var form=$("#submit_form");
+            var fd=new FormData(form.get(0));
+            var url=form.attr('action');
+            $.ajax({
+                url:url,
+                type:form.attr('method'),
+                processData:false,
+                contentType:false,
+                async:false,
+                data:fd,
+                beforeSend: function(){
+
+                },
+                success: function(data){
+                    console.log(data);
+                    eval('data='+data+'');
+                    if(data.code==0){
+                        layer.msg(data.msg);
+                        setTimeout(function(){window.location.href=document.referrer;}, 1000);
+                        
+                    }else if(data.code==1){
+                        layer.msg(data.msg);
+                        setTimeout(function(){window.location.href="{:url('home/business/business_info')}";}, 1000);
+                        flag = false;
+                    }else{
+                        layer.msg(data.msg);
+                        flag = false;
+                    }
+
+                },
+                complete: function(){
+
+                }
+
+            })
+        });
+    </script>
+{include file="common/fooder" /}
+</body>
+</html> 
